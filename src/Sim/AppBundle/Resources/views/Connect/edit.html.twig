@@ -1,0 +1,237 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+
+{% block title %}SimAppBundle:Linkman:home{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="page-header">
+                <h2>通讯录 <small>{{ connect.name }}</small></h2>
+            </div>
+        </div>
+
+            <div class="col-md-6">
+                <h3>联系方式
+                    <small><a href="{{ url('connect_update' , {'connect_id' : connect.id}) }}">更新</a></small>
+                </h3>
+
+                <table class="table">
+                    <tr>
+                        <td>联系人称呼</td>
+                        <td>{{ connect.name }}</td>
+                    </tr>
+
+                    {% if connect.email %}
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ connect.email }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.qq %}
+                    <tr>
+                        <td>QQ</td>
+                        <td>{{ connect.qq }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.phone %}
+                    <tr>
+                        <td>固定电话</td>
+                        <td>{{ connect.phone }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.mobile %}
+                    <tr>
+                        <td>手机</td>
+                        <td>{{ connect.mobile }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.fax %}
+                    <tr>
+                        <td>传真</td>
+                        <td>{{ connect.fax }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.weibo %}
+                    <tr>
+                        <td>新浪微博</td>
+                        <td>{{ connect.weibo }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.twitter %}
+                    <tr>
+                        <td>Twitter</td>
+                        <td>{{ connect.twitter }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.facebook %}
+                    <tr>
+                        <td>Facebook</td>
+                        <td>{{ connect.facebook }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.linkedin %}
+                    <tr>
+                        <td>领英网</td>
+                        <td>{{ connect.linkedin }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.address %}
+                    <tr>
+                        <td>地址</td>
+                        <td>{{ connect.address }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.blog %}
+                    <tr>
+                        <td>博客</td>
+                        <td>{{ connect.blog }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.weibo %}
+                    <tr>
+                        <td>新浪微博</td>
+                        <td>{{ connect.weibo }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.website %}
+                    <tr>
+                        <td>网站</td>
+                        <td>{{ connect.website }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if connect.description %}
+                    <tr>
+                        <td>联系方式描述</td>
+                        <td>{{ connect.description }}</td>
+                    </tr>
+                    {% endif %}
+
+                </table>
+
+
+            </div>
+
+            <div class="col-md-6">
+                <h3>联系人属性
+                    <small><a href="{{ url('connect_fixed' , {'connect_id' : connect.id}) }}">更新</a></small>
+                </h3>
+
+
+                <table class="table">
+
+                    {% if fixed.gender %}
+                    <tr>
+                        <td>性别</td>
+                        <td>{% if fixed.gender == 1 %} 男 {% elseif fixed.gender == 2 %} 女 {% endif %}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if fixed.age %}
+                    <tr>
+                        <td>年龄</td>
+                        <td>{{ fixed.age }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if fixed.work %}
+                    <tr>
+                        <td>工作/职位</td>
+                        <td>{{ fixed.work }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if fixed.education %}
+                    <tr>
+                        <td>教育程度</td>
+                        <td>{{ fixed.education }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if fixed.income %}
+                    <tr>
+                        <td>收入</td>
+                        <td>{{ fixed.income }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if fixed.value %}
+                    <tr>
+                        <td>价值度</td>
+                        <td>{{ fixed.value }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if fixed.value %}
+                    <tr>
+                        <td>客户关系</td>
+                        <td>{{ fixed.relationship }}</td>
+                    </tr>
+                    {% endif %}
+
+                    {% for fluent in fixed.fluent %}
+                        <tr>
+                            <td>{{ fluent.subject }}</td>
+                            <td>{{ fluent.value }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+
+        <div class="col-md-6">
+
+            <h3>关联的项目</h3>
+
+            {% if connect.project %}
+            <table class="table">
+
+                <tr>
+                    <td>项目名</td>
+                    <td><a href="{{ url('edit_project' , {'project_id' : connect.project.id}) }}">{{ connect.project }}</a></td>
+                </tr>
+
+                <tr>
+                    <td>项目金额</td>
+                    <td><i class="fa fa-rmb"></i> {{ connect.project.contactPayment }}</td>
+                </tr>
+
+                <tr>
+                    <td>合同签署日期</td>
+                    <td> {{ connect.project.signAt | date('Y年m月d日') }}</td>
+                </tr>
+
+                <tr>
+                    <td>项目开始日期</td>
+                    <td>{{ connect.project.startAt | date('Y年m月d日') }}</td>
+                </tr>
+
+                <tr>
+                    <td>项目结束日期</td>
+                    <td>{{ connect.project.endAt | date('Y年m月d日') }}</td>
+                </tr>
+
+            </table>
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

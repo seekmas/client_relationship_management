@@ -1,0 +1,108 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block title %}SimAppBundle:Linkman:home{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h2>项目: {{ project }}</h2>
+            <p>{{ project.description }}</p>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="page-header">
+                <h2>项目事件(进度) <small><a href="{{ url('event_created_from_project' , {'project_id' : project.id}) }}">添加新的事件</a></small></h2>
+            </div>
+
+            <ul>
+            {% for event in project.event %}
+
+                <li><span class="label label-info">{{ event.createdAt | date('Y-m-d') }}</span>
+                    <strong>{{ event }}</strong>: {{ event.content }}
+                </li>
+
+            {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>客户信息</h2>
+                    </div>
+
+                    {% if project.client %}
+                        <p>
+                            项目所属的客户:
+                            <strong><a href="{{ url('edit_client' , {'client_id' : project.client.id}) }}">{{ project.client }}</a></strong>
+                        </p>
+
+                    {% else %}
+                            <div class="col-md-6">
+                            选择一个客户
+                            {{ form(form) }}
+                            </div>
+
+                            <div class="col-md-6">
+                            或者<strong>创建一个客户</strong>
+                                <p><a class="btn btn-default" href="{{ url('create_client', {'project_id' : project.id}) }}">创建一个客户</a></p>
+                            </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>项目信息 <small><a href="{{ url('update_project_basic_info' , {'project_id' : project.id}) }}">更新信息</a></small></h2>
+                    </div>
+
+                    <dl class="dl-horizontal">
+                        <dt>项目名</dt>
+                        <dd>{{ project }}</dd>
+
+                        <dt>项目金额</dt>
+                        <dd><i class="fa fa-rmb"></i> {{ project.contactPayment }}</dd>
+
+                        <dt>合同签署日期</dt>
+                        <dd>{{ project.signAt | date('Y年m月d日') }}</dd>
+
+                        <dt>项目开始</dt>
+                        <dd>{{ project.startAt | date('Y年m月d日') }}</dd>
+
+                        <dt>项目结束</dt>
+                        <dd>{{ project.endAt | date('Y年m月d日') }}</dd>
+
+                    </dl>
+
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>项目联系(负责人/联系方式) <small><a href="{{ url('update_project_connect_info' , {'project_id' : project.id}) }}">添加联系方式</a></small></h2>
+                    </div>
+
+                    <ul>
+                        {% for connect in project.connect %}
+                            <li>
+                                <a href="{{ url('connect_edit' , {'connect_id': connect.id}) }}">
+                                    {{ connect.name }} ( {{ connect.description }} )
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}
+
+

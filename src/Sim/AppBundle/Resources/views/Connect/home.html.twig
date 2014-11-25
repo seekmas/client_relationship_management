@@ -1,0 +1,41 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+
+{% block title %}SimAppBundle:Linkman:home{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="page-header">
+                <h2>通讯录</h2>
+            </div>
+
+            <ul>
+
+                {% for connect in connects %}
+
+                    <li>
+
+                        <a href="{{ url('connect_edit' , {'connect_id':connect.id}) }}">
+                        {{ connect.name }}
+                        (
+
+                            {% if connect.email %}Email: {{ connect.email }}{% endif %}
+
+                        {% if connect.description %}备注: {{ connect.description }}{% endif %}
+
+                        )
+                        </a>
+
+                    </li>
+
+                {% endfor %}
+            </ul>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

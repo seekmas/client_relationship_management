@@ -1,0 +1,23 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="page-header">
+                <h2>客户</h2>
+            </div>
+
+            <ul>
+            {% for client in clients %}
+
+                <li><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">{{ client.name }}</a></li>
+
+            {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="mot.evans <mot.wu@makotoglobal.com>">
+    <title>擀霸客户管理</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('dist/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/doc.css') }}" rel="stylesheet">
+    <link href="{{ asset('simapp/css/main.css') }}" rel="stylesheet">
+
+
+    <link href="{{ asset('datetime-picker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico">
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+</head>
+<body>
+
+{% include "SimAppBundle::navigator.html.twig" %}
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+
+        <p>Designed and built with all the love in the world by <a href="http://segmentfault.com/blog/404" target="_blank">@mot_evans</a> and <a href="#" target="_blank">GembaChina PD Team</a>.</p>
+        <br/>
+        <p>This project is based on :</p>
+
+        <ul class="bs-docs-footer-links muted">
+            <li>Current Version： 1.0beta</li>
+            <li>·</li>
+            <li><a href="#">Sension Symfony2.5</a></li>
+            <li>·</li>
+            <li><a href="#">FriendsOfSymfony Bundle</a></li>
+            <li>·</li>
+            <li><a href="#">Knp Bundle</a></li>
+            <li>·</li>
+            <li><a href="#">JMS Bundle</a></li>
+            <li>·</li>
+            <li><a href="#">Stof</a></li>
+            <li>·</li>
+            <li><a href="#">Doctrine2</a></li>
+            <li>·</li>
+            <li><a href="#">AngularJS</a></li>
+            <li>·</li>
+            <li><a href="#">Bootstrap3</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('datetime-picker/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ asset('datetime-picker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}" charset="UTF-8"></script>
+<script type="text/javascript">
+    $(function(){
+
+        $('[data-provider="datepicker"]').datetimepicker({
+            autoclose: true,
+            format: 'yyyy/mm/dd',
+            language: 'fr',
+            minView: 'month',
+            pickerPosition: 'bottom-left',
+            todayBtn: true,
+            startView: 'month'
+        });
+
+        $('[data-provider="datetimepicker"]').datetimepicker({
+            autoclose: true,
+            format: 'yyyy/mm/dd HH:ii',
+            language: 'fr',
+            pickerPosition: 'bottom-left',
+            todayBtn: true
+        });
+
+        $('[data-provider="timepicker"]').datetimepicker({
+            autoclose: true,
+            format: 'hh:ii',
+            formatViewType: 'time',
+            maxView: 'day',
+            minView: 'hour',
+            pickerPosition: 'bottom-left',
+            startView: 'day'
+        });
+
+        // Restore value from hidden input
+        $('input[type=hidden]', '.date').each(function(){
+            if($(this).val()) {
+                $(this).parent().datetimepicker('setValue');
+            }
+        });
+
+    });
+</script>
+
+{% block js %}{% endblock %}
+
+</body>
+</html>

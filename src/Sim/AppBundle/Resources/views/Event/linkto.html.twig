@@ -1,0 +1,49 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block title %}SimAppBundle:Linkman:home{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="page-header">
+                <h1>(2)把事件分配给项目
+
+                    <small>
+                        {% if event.project %}
+                            已经分配到项目 {{ event.project }}
+                        {% else %}
+                            找到对应的项目或者创建新项目
+                        {% endif %}
+                    </small>
+
+                </h1>
+            </div>
+
+            <div class="jumbotron">
+                <p>{{ event.subject }}</p>
+                <small>{{ event.content }}</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            {{ form(select_form) }}
+
+        </div>
+
+
+        <div class="col-md-6">
+
+            {{ form(form) }}
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

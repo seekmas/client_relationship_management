@@ -1,0 +1,30 @@
+home:
+    resource: "@SimAppBundle/Controller/HomeController.php"
+    prefix:   /
+    type:     annotation
+
+project:
+    resource: "@SimAppBundle/Controller/ProjectController.php"
+    prefix:   /project
+    type:     annotation
+
+connect:
+    resource: "@SimAppBundle/Controller/ConnectController.php"
+    prefix:   /connect
+    type:     annotation
+
+event:
+    resource: "@SimAppBundle/Controller/EventController.php"
+    prefix:   /event
+    type:     annotation
+
+builder:
+    resource: "@SimAppBundle/Controller/BuilderController.php"
+    prefix:   /builder
+    type:     annotation
+
+client:
+    resource: "@SimAppBundle/Controller/ClientController.php"
+    prefix:   /client
+    type:     annotation
+

@@ -1,0 +1,51 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block title %}SimAppBundle:Linkman:home{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h2>创建</h2>
+    </div>
+
+<div class="row">
+
+    <div class="col-md-3">
+    <div class="list-group">
+        <a href="{{ url('create_event') }}" class="list-group-item">
+            <h4 class="list-group-item-heading">创建一个项目事件</h4>
+
+        </a>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url('create_project') }}" class="list-group-item">
+                <h4 class="list-group-item-heading">创建一个项目</h4>
+
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url('create_connect') }}" class="list-group-item">
+                <h4 class="list-group-item-heading">创建一个联系方式</h4>
+
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="{{ url('create_client') }}" class="list-group-item">
+                <h4 class="list-group-item-heading">创建一个客户</h4>
+
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

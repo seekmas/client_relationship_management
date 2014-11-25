@@ -1,0 +1,53 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+
+{% block title %}SimAppBundle:Linkman:home{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="page-header">
+                <h2>通讯录 <small>{{ connect.name }}</small></h2>
+            </div>
+
+            <div class="col-md-6">
+                <h3>更新固定客户属性
+                    <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">返回</a></small>
+                </h3>
+                <hr/>
+
+                {{ form(form) }}
+
+
+            </div>
+
+            <div class="col-md-6">
+                <h3>
+                    更新自定义客户属性
+                    <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">返回</a></small>
+                </h3>
+                <hr/>
+                {{ form(f_form) }}
+                <br/>
+                <table class="table">
+                {% for fluent in fixed.fluent %}
+                    <tr>
+                        <td><strong>{{ fluent.subject }}</strong></td>
+                        <td>{{ fluent.value }}</td>
+                        <td>
+                            <a href="">编辑</a>
+                            <a href="">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

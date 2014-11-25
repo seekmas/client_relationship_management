@@ -1,0 +1,32 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h2>客户信息</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3>{{ client.name }} 信息</h3>
+            <table class="table">
+                <tr>
+                    <td>描述</td>
+                    <td>{{ client.description }}</td>
+                </tr>
+            </table>
+
+            <h3>{{ client.name }} 项目</h3>
+            <hr/>
+            <ul>
+                {% for project in client.project %}
+                    <li><a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project }}</a></li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+
+{% endblock %}
