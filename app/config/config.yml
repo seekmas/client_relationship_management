@@ -109,6 +109,7 @@ stof_doctrine_extensions:
             softdeleteable: true
             loggable: true
     uploadable:
+        validate_writable_directory: false
         default_file_path:       %kernel.root_dir%/../web/uploads
         mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
         default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
@@ -141,3 +142,5 @@ mopa_bootstrap:
         render_optional_text: ~
         render_required_asterisk: ~
         error_type: ~
+
+knp_time: ~

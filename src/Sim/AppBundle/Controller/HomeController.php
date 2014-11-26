@@ -16,7 +16,6 @@ class HomeController extends Controller
      */
     public function createAction(Request $request)
     {
-
         $em = $this->getManager();
 
         $connect = new Connect();
@@ -42,7 +41,7 @@ class HomeController extends Controller
     public function homeAction(Request $request)
     {
 
-        return [];
+        $logs = $this->get('log')->createQueryBuilder('l')->select('l')->orderBy('l.id' , 'desc')->getQuery()->getResult();
+        return ['logs' => $logs];
     }
 }
-

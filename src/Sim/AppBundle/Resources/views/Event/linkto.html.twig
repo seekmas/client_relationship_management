@@ -5,6 +5,10 @@
 {% block body %}
     <div class="row">
         <div class="col-md-12">
+            
+            <div class="jumbotron">
+                <h2>创建一个项目</h2>
+            </div>
 
             <div class="page-header">
                 <h1>(2)把事件分配给项目
@@ -20,10 +24,10 @@
                 </h1>
             </div>
 
-            <div class="jumbotron">
-                <p>{{ event.subject }}</p>
-                <small>{{ event.content }}</small>
-            </div>
+
+                <h3>事件名: {{ event.subject }}</h3>
+                <p>事件内容: {{ event.content }}</p>
+
         </div>
 
     </div>
@@ -31,14 +35,18 @@
     <div class="row">
 
         <div class="col-md-6">
-
+            <div class="page-header">
+                <h2>分配给现有的项目</h2>
+            </div>
             {{ form(select_form) }}
 
         </div>
 
 
         <div class="col-md-6">
-
+            <div class="page-header">
+                <h2>分配给新的项目</h2>
+            </div>
             {{ form(form) }}
 
         </div>
