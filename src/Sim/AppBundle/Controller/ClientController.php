@@ -18,7 +18,13 @@ class ClientController extends Controller
      */
     public function homeAction()
     {
-        $clients = $this->get('client')->findAll();
+        $clients = $this->get('client')
+                        ->createQueryBuilder('c')
+                        ->select('c')
+                        ->orderBy('c.initial')
+                        ->getQuery()
+                        ->getResult()
+        ;
 
         return ['clients' => $clients];
     }
@@ -36,6 +42,9 @@ class ClientController extends Controller
         $this->processForm($form,$client);
         if($form->isValid())
         {
+
+            $client->setInitial($this->get('string_utils')->pinyin($client->getName()));
+
             $em->persist($client);
             $em->flush();
             if($project_id > 0)
@@ -60,19 +69,17 @@ class ClientController extends Controller
      */
     public function editAction(Request $request , $client_id)
     {
-        //$em = $this->getManager();
         $client = $this->get('client')->find($client_id);
-
         return [
             'client' => $client ,
         ];
     }
 
     /**
-     * @Route("/{client_id}/update" , name="update_client")
+     * @Route("/{client_id}/update/{fluent_id}" , name="update_client" , defaults={"fluent_id": 0})
      * @Template()
      */
-    public function updateAction(Request $request , $client_id)
+    public function updateAction(Request $request , $client_id , $fluent_id = 0)
     {
         $em = $this->getManager();
 
@@ -82,13 +89,16 @@ class ClientController extends Controller
         $this->processForm($form , $client);
         if($form->isValid())
         {
+            $client->setInitial($this->get('string_utils')->pinyin($client->getName()));
             $em->persist($client);
             $em->flush();
 
             return $this->redirect('update_client' , ['client_id' => $client->getId()]);
         }
 
-        $fluent = new Fluent();
+
+        $fluent = $fluent_id == 0 ? new Fluent() : $this->get('fluent')->find($fluent_id);
+
         $fluent_type = new FluentType();
         $fluent_form = $this->getForm($fluent_type , $fluent , $request);
         $this->processForm($fluent_form , $fluent);

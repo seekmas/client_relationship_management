@@ -71,6 +71,11 @@ class Client
     private $fluent;
 
     /**
+     * @ORM\Column(name="initial" , type="string" , length=1 , nullable=true)
+     */
+    private $initial;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -249,6 +254,24 @@ class Client
     public function setFluent($fluent)
     {
         $this->fluent = $fluent;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInitial()
+    {
+        return $this->initial;
+    }
+
+    /**
+     * @return Client
+     * @param mixed $initial
+     */
+    public function setInitial($initial)
+    {
+        $this->initial = $initial;
         return $this;
     }
 

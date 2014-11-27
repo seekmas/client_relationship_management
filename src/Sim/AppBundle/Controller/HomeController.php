@@ -11,6 +11,17 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends Controller
 {
     /**
+     * @Route("/" , name="home")
+     * @Template()
+     */
+    public function homeAction(Request $request)
+    {
+        $logs = $this->get('log');
+        $logs = $this->get('page')->get($logs);
+        return ['logs' => $logs];
+    }
+
+    /**
      * @Route("/create" , name="create_connect")
      * @Template()
      */
@@ -34,23 +45,4 @@ class HomeController extends Controller
         ];
     }
 
-    /**
-     * @Route("/" , name="home")
-     * @Template()
-     */
-    public function homeAction(Request $request)
-    {
-
-
-        $logs = $this->get('log');
-        $logs = $this->get('page')->get($logs);
-
-//                     ->createQueryBuilder('l')
-//                     ->select('l')
-//                     ->orderBy('l.id' , 'desc')
-//                     ->getQuery()
-//                     ->getResult();
-
-        return ['logs' => $logs];
-    }
 }

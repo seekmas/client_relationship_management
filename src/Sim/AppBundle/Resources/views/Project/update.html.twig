@@ -3,7 +3,63 @@
 {% block title %}SimAppBundle:Linkman:home{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h2>项目: {{ project | raw }}</h2>
+                </div>
+            </div>
 
-    {{ form(form) }}
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h3>更新固定项目属性
+                        <small><a href="{{ url('edit_project' , {'project_id': project.id}) }}">返回</a></small>
+                    </h3>
+                </div>
+                {{ form(form) }}
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h3>
+                        更新自定义项目属性
+                        <small><a href="{{ url('edit_project' , {'project_id': project.id}) }}">返回</a></small>
+                    </h3>
+                </div>
+
+
+                {{ form(fluent_form) }}
+                <hr>
+
+                <table class="table">
+                    <tbody><tr>
+                        <td>属性</td>
+                        <td>值</td>
+                        <td>操作</td>
+                    </tr>
+                    {% for fluent in project.fluent %}
+                    <tr>
+                        <td>{{ fluent.subject }}</td>
+                        <td><strong>{{ fluent.value }}</strong></td>
+                        <td>
+                            <a href="{{ url('update_project_basic_info' , {'project_id': project.id , 'fluent_id': fluent.id}) }}">编辑</a>
+                            <a href="{{ url('drop_fluent' , {'fluent_id': fluent.id}) }}">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody></table>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
 
 {% endblock %}

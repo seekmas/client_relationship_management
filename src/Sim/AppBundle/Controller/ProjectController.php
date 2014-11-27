@@ -6,9 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sim\AppBundle\Entity\Connect;
 use Sim\AppBundle\Entity\Event;
+use Sim\AppBundle\Entity\Fluent;
 use Sim\AppBundle\Entity\Project;
 use Sim\AppBundle\Form\ConnectType;
 use Sim\AppBundle\Form\EventType;
+use Sim\AppBundle\Form\FluentType;
 use Sim\AppBundle\Form\ProjectType;
 use Sim\AppBundle\Form\SelectClientType;
 use Sim\AppBundle\Form\SelectConnectType;
@@ -94,32 +96,40 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/{project_id}/update" , name="update_project_basic_info")
+     * @Route("/{project_id}/update/{fluent_id}" , name="update_project_basic_info" , defaults={"fluent_id": 0})
      * @Template()
      */
-    public function updateAction(Request $request , $project_id)
+    public function updateAction(Request $request , $project_id , $fluent_id = 0)
     {
-
         $em = $this->getManager();
-
         $project = $this->get('project')->find($project_id);
-
         $type = new ProjectType();
-
         $form = $this->getForm($type , $project , $request);
-
         $this->processForm($form,$project);
-
         if($form->isValid())
         {
             $em->persist($project);
             $em->flush();
+            return $this->redirect('update_project_basic_info' , ['project_id' => $project_id]);
+        }
 
-            return $this->redirect('edit_project' , ['project_id' => $project_id]);
+        $fluent  = ($fluent_id == 0 ? new Fluent() : $this->get('fluent')->find($fluent_id));
+        $fluent_type = new FluentType();
+        $fluent_form = $this->getForm($fluent_type , $fluent , $request);
+        $this->processForm($fluent_form , $fluent);
+        if($fluent_form->isValid())
+        {
+            $fluent->setProject($project);
+            $em->persist($fluent);
+            $em->flush();
+
+            return $this->redirect('update_project_basic_info' , ['project_id' => $project_id]);
         }
 
         return [
+            'project' => $project ,
             'form' => $form->createView() ,
+            'fluent_form' => $fluent_form->createView() ,
         ];
     }
 

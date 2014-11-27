@@ -30,11 +30,19 @@
             <hr/>
 
             <table class="table">
+                <tr>
+                    <td>属性</td>
+                    <td>值</td>
+                    <td>操作</td>
+                </tr>
                 {% for fluent in client.fluent %}
                 <tr>
                     <td>{{ fluent.subject }}</td>
-                    <td>{{ fluent.value }}</td>
-                    <td></td>
+                    <td><strong>{{ fluent.value }}</strong></td>
+                    <td>
+                        <a href="{{ url('update_client' , { 'client_id': client.id , 'fluent_id': fluent.id}) }}">编辑</a>
+                        <a href="{{ url('drop_fluent' , {'fluent_id': fluent.id}) }}">删除</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>

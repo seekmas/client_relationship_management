@@ -8,8 +8,21 @@
                 <h2>客户</h2>
             </div>
 
+            {% set initial = '' %}
             <ul>
             {% for client in clients %}
+
+                {% if initial != client.initial %}
+
+                    {% set initial = client.initial %}
+
+                    <li style="list-style: none">
+                        <div class="page-header">
+                            <h2>{{ client.initial }}</h2>
+                        </div>
+                    </li>
+
+                {% endif %}
 
                 <li><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">{{ client.name }}</a></li>
 

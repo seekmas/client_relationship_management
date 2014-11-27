@@ -15,8 +15,8 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name' , null , ['label' => '公司/企业名'])
-            ->add('description' , null , ['label' => '客户的简单介绍'])
+            ->add('name' , null , ['label' => '企业客户名'])
+            ->add('description' , null , ['label' => '企业客户的介绍( 例如行业,业务 )'])
         ;
 
         $builder->add('save' , 'submit' , [ 'label' => '添加/更新客户']);

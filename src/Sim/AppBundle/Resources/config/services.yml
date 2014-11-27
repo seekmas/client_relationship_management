@@ -45,3 +45,6 @@ services:
         factory_service: doctrine
         factory_method: getRepository
         arguments: [ Sim\AppBundle\Entity\Fluent ]
+
+    string_utils:
+        class: Sim\AppBundle\Utils\StringUtils

@@ -113,6 +113,11 @@ class Project
     private $dateFilter;
 
     /**
+     * @ORM\OneToMany(targetEntity="Fluent" , mappedBy="project")
+     */
+    private $fluent;
+
+    /**
      *
      * @ORM\ManyToMany(targetEntity="Connect", inversedBy="project")
      * @ORM\JoinTable(name="Project_Connect")
@@ -433,6 +438,24 @@ class Project
     public function addConnect($connect)
     {
         $this->connect[] = $connect;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFluent()
+    {
+        return $this->fluent;
+    }
+
+    /**
+     * @return Project
+     * @param mixed $fluent
+     */
+    public function setFluent($fluent)
+    {
+        $this->fluent = $fluent;
         return $this;
     }
 

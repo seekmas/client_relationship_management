@@ -65,6 +65,19 @@ class Fluent
     private $clientId;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Project" , inversedBy="fluent")
+     * @ORM\JoinColumn(name="project_id" , referencedColumnName="id")
+     */
+    private $project;
+
+    /**
+     * @var integer
+     * @Gedmo\Versioned
+     * @ORM\Column(name="project_id", type="integer" , nullable=true)
+     */
+    private $projectId;
+
+    /**
      * @ORM\Column(name="deleted_at" , type="datetime" , nullable=true)
      */
     private $deletedAt;
@@ -194,6 +207,42 @@ class Fluent
     public function setClientId($clientId)
     {
         $this->clientId = $clientId;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @return Fluent
+     * @param mixed $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProjectId()
+    {
+        return $this->projectId;
+    }
+
+    /**
+     * @return Fluent
+     * @param int $projectId
+     */
+    public function setProjectId($projectId)
+    {
+        $this->projectId = $projectId;
         return $this;
     }
 
