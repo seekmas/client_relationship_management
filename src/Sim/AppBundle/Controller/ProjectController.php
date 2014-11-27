@@ -11,6 +11,7 @@ use Sim\AppBundle\Form\ConnectType;
 use Sim\AppBundle\Form\EventType;
 use Sim\AppBundle\Form\ProjectType;
 use Sim\AppBundle\Form\SelectClientType;
+use Sim\AppBundle\Form\SelectConnectType;
 use Symfony\Component\HttpFoundation\Request;
 
 class ProjectController extends Controller
@@ -68,12 +69,14 @@ class ProjectController extends Controller
      */
     public function editAction(Request $request , $project_id)
     {
-
         $project = $this->get('project')->find($project_id);
 
+
         $select = new SelectClientType();
+
         $form = $this->createForm($select);
         $form->handleRequest($request);
+
         if($form->isValid())
         {
             $data = $form->getData();
@@ -138,12 +141,24 @@ class ProjectController extends Controller
             $connect->setProject($project);
             $em->persist($connect);
             $em->flush();
+            return $this->redirect('edit_project' , ['project_id' => $project_id]);
+        }
+
+        $select_type = new SelectConnectType();
+        $select_form = $this->createForm($select_type , $project);
+        $select_form->handleRequest($request);
+        if($select_form->isValid())
+        {
+            $em->persist($project);
+            $em->flush();
 
             return $this->redirect('edit_project' , ['project_id' => $project_id]);
         }
 
-
-        return ['form' => $form->createView()];
+        return [
+            'form' => $form->createView() ,
+            'select_form' => $select_form->createView() ,
+        ];
     }
 
 }

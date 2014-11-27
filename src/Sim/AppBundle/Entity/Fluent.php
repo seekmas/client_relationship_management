@@ -3,12 +3,15 @@
 namespace Sim\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Fluent
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @Gedmo\Loggable()
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Fluent
 {
@@ -43,10 +46,28 @@ class Fluent
 
     /**
      * @var integer
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="fixed_id", type="integer" , nullable=true)
      */
     private $fixedId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Client" , inversedBy="fluent")
+     * @ORM\JoinColumn(name="client_id" , referencedColumnName="id")
+     */
+    private $client;
+
+    /**
+     * @var integer
+     * @Gedmo\Versioned
+     * @ORM\Column(name="client_id", type="integer" , nullable=true)
+     */
+    private $clientId;
+
+    /**
+     * @ORM\Column(name="deleted_at" , type="datetime" , nullable=true)
+     */
+    private $deletedAt;
 
     /**
      * Get id
@@ -138,5 +159,64 @@ class Fluent
     {
         $this->fixedId = $fixedId;
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @return Fluent
+     * @param mixed $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * @return Fluent
+     * @param int $clientId
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @return Fluent
+     * @param mixed $deletedAt
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getSubject();
     }
 }

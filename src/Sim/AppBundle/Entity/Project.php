@@ -4,6 +4,7 @@ namespace Sim\AppBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -42,7 +43,7 @@ class Project
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="start_at", type="datetime" , nullable=true)
      */
     private $startAt;
@@ -70,7 +71,7 @@ class Project
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
@@ -106,14 +107,21 @@ class Project
     private $clientId;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(name="date_filter" , type="string" , length=64)
      */
     private $dateFilter;
 
     /**
-     * @ORM\OneToMany(targetEntity="Connect" , mappedBy="project")
+     *
+     * @ORM\ManyToMany(targetEntity="Connect", inversedBy="project")
+     * @ORM\JoinTable(name="Project_Connect")
      */
     private $connect;
+
+    public function __construct() {
+        $this->connect = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -414,11 +422,17 @@ class Project
 
     /**
      * @return Project
-     * @param mixed $connect
+     * @param mixed $connects
      */
-    public function setConnect($connect)
+    public function setConnect($connects)
     {
-        $this->connect = $connect;
+        $this->connect = $connects;
+        return $this;
+    }
+
+    public function addConnect($connect)
+    {
+        $this->connect[] = $connect;
         return $this;
     }
 
@@ -432,6 +446,6 @@ class Project
 
     public function __toString()
     {
-        return $this->getProjectName();
+        return $this->getProjectName() . ( $this->getDescription() ? ' <small> - '.$this->getDescription().'</small>' : '' );
     }
 }

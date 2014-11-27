@@ -7,9 +7,7 @@
     <div class="container">
 
         <div class="jumbotron">
-            <h2>项目: {{ project }}</h2>
-            <p>{{ project.description }}</p>
-
+            <h2>项目: {{ project | raw }}</h2>
         </div>
 
         <div class="col-md-6">
@@ -62,7 +60,7 @@
 
                     <dl class="dl-horizontal">
                         <dt>项目名</dt>
-                        <dd>{{ project }}</dd>
+                        <dd><h4>{{ project | raw }}</h4></dd>
 
                         <dt>项目金额</dt>
                         <dd><i class="fa fa-rmb"></i> {{ project.contactPayment }}</dd>

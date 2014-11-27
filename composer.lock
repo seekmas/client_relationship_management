@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "38e6845e399aaca6860e158cc09fc081",
+    "hash": "996aee704602a2841df4c1b6d153d693",
     "packages": [
         {
             "name": "craue/formflow-bundle",
@@ -1560,6 +1560,50 @@
             "time": "2013-09-10 10:06:34"
         },
         {
+            "name": "pinano/select2-bundle",
+            "version": "dev-master",
+            "target-dir": "Pinano/Select2Bundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pinano/select2-bundle.git",
+                "reference": "4cc84b585407998f698b45627bf2335ef6095c6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pinano/select2-bundle/zipball/4cc84b585407998f698b45627bf2335ef6095c6a",
+                "reference": "4cc84b585407998f698b45627bf2335ef6095c6a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "2.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Pinano\\Select2Bundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fernando Arroyo",
+                    "email": "farroyo@gmail.com"
+                }
+            ],
+            "description": "Symfony2 bundle for wrapping the famous select2 jquery plugin by @ivaynberg",
+            "homepage": "http://github.com/pinano/select2-bundle",
+            "keywords": [
+                "bundle",
+                "jquery",
+                "select2"
+            ],
+            "time": "2014-11-24 09:57:11"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -2711,7 +2755,8 @@
         "mopa/bootstrap-bundle": 10,
         "friendsofsymfony/user-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "craue/formflow-bundle": 20
+        "craue/formflow-bundle": 20,
+        "pinano/select2-bundle": 20
     },
     "prefer-stable": false,
     "platform": {

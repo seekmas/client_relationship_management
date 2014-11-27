@@ -28,3 +28,7 @@ client:
     prefix:   /client
     type:     annotation
 
+drop:
+    resource: "@SimAppBundle/Controller/DropController.php"
+    prefix:   /drop
+    type:     annotation

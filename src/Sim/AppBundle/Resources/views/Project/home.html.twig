@@ -28,7 +28,7 @@
                 {% endif %}
 
 
-                <li>{{ project.createdAt | date('Y-m-d') }} <a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project }}</a></li>
+                <li><h4>{{ project.createdAt | date('Y-m-d') }} <a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project | raw }}</a></h4></li>
 
                 {% set filter = project.dateFilter %}
 

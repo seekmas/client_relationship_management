@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="jumbotron">
-        <h2>创建一个新的联系方式</h2>
+        <h2>添加一个新的联系方式到项目</h2>
     </div>
 
     <div class="container">
@@ -13,10 +13,21 @@
         <div class="row">
 
             <div class="col-md-6">
+
+                <div class="page-header">
+                    <h3>创建新的联系人</h3>
+                </div>
                 {{ form(form) }}
+
             </div>
 
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h3>从现有联系人中添加</h3>
+                </div>
+                {{ form(select_form) }}
+
+            </div>
 
 
         </div>

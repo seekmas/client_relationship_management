@@ -5,11 +5,12 @@
 
 .log_info {
     position: relative;
-    padding: 12px 0px 1em 5px;
+    padding: 4px 0px 2px 5px;
     overflow: hidden;
     border-bottom: 1px solid #F1F1F1;
 }
 
 .log_icon {
-    padding-right: 20px;
+    color: #369;
+    padding-right: 10px;
 }

@@ -41,7 +41,16 @@ class HomeController extends Controller
     public function homeAction(Request $request)
     {
 
-        $logs = $this->get('log')->createQueryBuilder('l')->select('l')->orderBy('l.id' , 'desc')->getQuery()->getResult();
+
+        $logs = $this->get('log');
+        $logs = $this->get('page')->get($logs);
+
+//                     ->createQueryBuilder('l')
+//                     ->select('l')
+//                     ->orderBy('l.id' , 'desc')
+//                     ->getQuery()
+//                     ->getResult();
+
         return ['logs' => $logs];
     }
 }

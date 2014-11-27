@@ -41,6 +41,11 @@ class Controller extends CoreController
         return parent::redirect(parent::generateUrl($route_name,$params));
     }
 
+    public function jump($url)
+    {
+        return parent::redirect($url);
+    }
+
     public function getManager()
     {
         return $this->getDoctrine()->getManager();

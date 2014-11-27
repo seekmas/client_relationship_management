@@ -5,13 +5,16 @@
 
 {% block body %}
     <div class="row">
+
         <div class="col-md-12">
 
             <div class="page-header">
                 <h2>通讯录 <small>{{ connect.name }}</small></h2>
             </div>
         </div>
+    </div>
 
+    <div class="row">
             <div class="col-md-6">
                 <h3>联系方式
                     <small><a href="{{ url('connect_update' , {'connect_id' : connect.id}) }}">更新</a></small>
@@ -123,10 +126,12 @@
 
                 </table>
 
-
             </div>
 
             <div class="col-md-6">
+            <div class="row">
+
+            <div class="col-md-12">
                 <h3>联系人属性
                     <small><a href="{{ url('connect_fixed' , {'connect_id' : connect.id}) }}">更新</a></small>
                 </h3>
@@ -194,43 +199,44 @@
             </div>
 
 
-        <div class="col-md-6">
+        <div class="col-md-12">
 
             <h3>关联的项目</h3>
 
-            {% if connect.project %}
+            {% for project in  connect.project %}
             <table class="table">
 
                 <tr>
                     <td>项目名</td>
-                    <td><a href="{{ url('edit_project' , {'project_id' : connect.project.id}) }}">{{ connect.project }}</a></td>
+                    <td><a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project }}</a></td>
                 </tr>
 
                 <tr>
                     <td>项目金额</td>
-                    <td><i class="fa fa-rmb"></i> {{ connect.project.contactPayment }}</td>
+                    <td><i class="fa fa-rmb"></i> {{ project.contactPayment }}</td>
                 </tr>
 
                 <tr>
                     <td>合同签署日期</td>
-                    <td> {{ connect.project.signAt | date('Y年m月d日') }}</td>
+                    <td> {{ project.signAt | date('Y年m月d日') }}</td>
                 </tr>
 
                 <tr>
                     <td>项目开始日期</td>
-                    <td>{{ connect.project.startAt | date('Y年m月d日') }}</td>
+                    <td>{{ project.startAt | date('Y年m月d日') }}</td>
                 </tr>
 
                 <tr>
                     <td>项目结束日期</td>
-                    <td>{{ connect.project.endAt | date('Y年m月d日') }}</td>
+                    <td>{{ project.endAt | date('Y年m月d日') }}</td>
                 </tr>
 
             </table>
-            {% endif %}
+            {% endfor %}
 
         </div>
-
+        </div>
+                </div>
 
     </div>
 

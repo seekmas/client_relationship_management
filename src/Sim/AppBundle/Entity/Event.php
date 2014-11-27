@@ -2,9 +2,8 @@
 
 namespace Sim\AppBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Event
@@ -56,7 +55,7 @@ class Event
 
     /**
      * @var \DateTime
-     * @Gedmo\Versioned
+     *
      * @ORM\Column(name="deleted_at", type="datetime" , nullable=true)
      */
     private $deletedAt;

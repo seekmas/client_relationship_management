@@ -27,14 +27,14 @@ class Client
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -55,7 +55,7 @@ class Client
 
     /**
      * @var \DateTime
-     * @Gedmo\Versioned
+     *
      * @ORM\Column(name="deleted_at", type="datetime" , nullable=true)
      */
     private $deletedAt;
@@ -64,6 +64,11 @@ class Client
      * @ORM\OneToMany(targetEntity="Project" , mappedBy="client")
      */
     private $project;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Fluent" , mappedBy="client")
+     */
+    private $fluent;
 
     /**
      * Get id
@@ -226,6 +231,24 @@ class Client
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFluent()
+    {
+        return $this->fluent;
+    }
+
+    /**
+     * @return Client
+     * @param mixed $fluent
+     */
+    public function setFluent($fluent)
+    {
+        $this->fluent = $fluent;
         return $this;
     }
 

@@ -24,10 +24,12 @@ class TranslationExtension extends \Twig_Extension
         $list = [
             'create' => '创建' ,
             'update' => '更新' ,
-            'Sim\AppBundle\Entity\Connect' => '联系人资料' ,
-            'Sim\AppBundle\Entity\Event'   => '事件' ,
-            'Sim\AppBundle\Entity\Project'   => '项目' ,
+            'remove' => '删除' ,
+            'Sim\AppBundle\Entity\Connect'  => '联系人' ,
+            'Sim\AppBundle\Entity\Event'    => '事件' ,
+            'Sim\AppBundle\Entity\Project'  => '项目' ,
             'Sim\AppBundle\Entity\Client'   => '客户' ,
+            'Sim\AppBundle\Entity\Fluent'   => '资料' ,
         ];
 
         return $list[$key];
@@ -35,7 +37,9 @@ class TranslationExtension extends \Twig_Extension
 
     public function log_to_string($object)
     {
-        $repo = $this->get('doctrine')->getRepository($object->getObjectClass());
+        $em  = $this->get('doctrine')->getManager();
+        //$em->getFilters()->disable('soft-deleteable');
+        $repo = $em->getRepository($object->getObjectClass());
         $entity = $repo->find($object->getObjectId());
 
         return $entity;

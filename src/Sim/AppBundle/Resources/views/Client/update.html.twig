@@ -1,0 +1,47 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h2>客户: {{ client.name }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="page-header">
+                <h3>更新固定客户属性
+                    <small><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">返回</a></small>
+                </h3>
+            </div>
+            {{ form(form) }}
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="page-header">
+            <h3>
+                更新自定义客户属性
+                <small><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">返回</a></small>
+            </h3>
+            </div>
+
+            {{ form(fluent_form) }}
+            <hr/>
+
+            <table class="table">
+                {% for fluent in client.fluent %}
+                <tr>
+                    <td>{{ fluent.subject }}</td>
+                    <td>{{ fluent.value }}</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -5,7 +5,9 @@ namespace Sim\AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sim\AppBundle\Entity\Client;
+use Sim\AppBundle\Entity\Fluent;
 use Sim\AppBundle\Form\ClientType;
+use Sim\AppBundle\Form\FluentType;
 use Symfony\Component\HttpFoundation\Request;
 
 class ClientController extends Controller
@@ -63,6 +65,45 @@ class ClientController extends Controller
 
         return [
             'client' => $client ,
+        ];
+    }
+
+    /**
+     * @Route("/{client_id}/update" , name="update_client")
+     * @Template()
+     */
+    public function updateAction(Request $request , $client_id)
+    {
+        $em = $this->getManager();
+
+        $client = $this->get('client')->find($client_id);
+        $type = new ClientType();
+        $form = $this->getForm($type,$client,$request);
+        $this->processForm($form , $client);
+        if($form->isValid())
+        {
+            $em->persist($client);
+            $em->flush();
+
+            return $this->redirect('update_client' , ['client_id' => $client->getId()]);
+        }
+
+        $fluent = new Fluent();
+        $fluent_type = new FluentType();
+        $fluent_form = $this->getForm($fluent_type , $fluent , $request);
+        $this->processForm($fluent_form , $fluent);
+        if($fluent_form->isValid())
+        {
+            $fluent->setClient($client);
+            $em->persist($fluent);
+            $em->flush();
+            return $this->redirect('update_client' , ['client_id' => $client->getId()]);
+        }
+
+        return [
+            'client' => $client ,
+            'form'   => $form->createView() ,
+            'fluent_form' => $fluent_form->createView() ,
         ];
     }
 }

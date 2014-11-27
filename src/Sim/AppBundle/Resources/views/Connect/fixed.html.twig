@@ -12,7 +12,7 @@
             </div>
 
             <div class="col-md-6">
-                <h3>更新固定客户属性
+                <h3>更新联系人固定属性
                     <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">返回</a></small>
                 </h3>
                 <hr/>
@@ -24,7 +24,7 @@
 
             <div class="col-md-6">
                 <h3>
-                    更新自定义客户属性
+                    更新联系人自定义属性
                     <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">返回</a></small>
                 </h3>
                 <hr/>
@@ -36,8 +36,8 @@
                         <td><strong>{{ fluent.subject }}</strong></td>
                         <td>{{ fluent.value }}</td>
                         <td>
-                            <a href="">编辑</a>
-                            <a href="">删除</a>
+                            <a href="{{ url('connect_fixed' , {'connect_id': connect.id , 'fluent_id': fluent.id}) }}">编辑</a>
+                            <a href="{{ url('drop_fluent' , {'fluent_id': fluent.id}) }}">删除</a>
                         </td>
                     </tr>
                 {% endfor %}

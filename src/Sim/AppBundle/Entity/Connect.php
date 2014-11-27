@@ -3,6 +3,7 @@
 namespace Sim\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 
@@ -27,95 +28,98 @@ class Connect
     private $id;
 
     /**
+     * @var string
+     * @Gedmo\Versioned
      * @ORM\Column(name="name" , type="string" , length=255 , nullable=true)
      */
     private $name;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="email", type="string", length=255 , nullable=true)
      */
     private $email;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="phone", type="string", length=255 , nullable=true)
      */
     private $phone;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="mobile", type="string", length=255 , nullable=true)
      */
     private $mobile;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="fax", type="string", length=255 , nullable=true)
      */
     private $fax;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="address", type="string", length=255 , nullable=true)
      */
     private $address;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="blog", type="string", length=255 , nullable=true)
      */
     private $blog;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="website", type="string", length=255 , nullable=true)
      */
     private $website;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="weibo", type="string", length=255 , nullable=true)
      */
     private $weibo;
 
     /**
      * @var integer
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="qq", type="bigint" , nullable=true)
      */
     private $qq;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="twitter", type="string", length=255 , nullable=true)
      */
     private $twitter;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="facebook", type="string", length=255 , nullable=true)
      */
     private $facebook;
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="linkedin", type="string", length=255 , nullable=true)
      */
     private $linkedin;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(name="description" , type="text" , nullable=true)
      */
     private $description;
@@ -136,15 +140,9 @@ class Connect
     private $deletedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Project" , inversedBy="connect")
-     * @ORM\JoinColumn(name="project_id" , referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Project" , mappedBy="connect")
      */
     private $project;
-
-    /**
-     * @ORM\Column(name="project_id" , type="integer" , nullable=true)
-     */
-    private $projectId;
 
     /**
      * @ORM\Column(name="date_filter" , type="string" , length=64)
@@ -155,6 +153,10 @@ class Connect
      * @ORM\OneToOne(targetEntity="Fixed" , mappedBy="connect")
      */
     private $fixed;
+
+    public function __construct() {
+        $this->groups = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -546,25 +548,7 @@ class Connect
      */
     public function setProject($project)
     {
-        $this->project = $project;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProjectId()
-    {
-        return $this->projectId;
-    }
-
-    /**
-     * @return Connect
-     * @param mixed $projectId
-     */
-    public function setProjectId($projectId)
-    {
-        $this->projectId = $projectId;
+        $this->project[] = $project;
         return $this;
     }
 

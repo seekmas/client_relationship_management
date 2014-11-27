@@ -3,12 +3,16 @@
 namespace Sim\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Fixed
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @Gedmo\Loggable()
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Fixed
 {
@@ -23,14 +27,14 @@ class Fixed
 
     /**
      * @var boolean
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="gender", type="smallint" , nullable=true)
      */
     private $gender;
 
     /**
      * @var integer
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="age", type="smallint" , nullable=true)
      */
     private $age;
@@ -44,49 +48,46 @@ class Fixed
 
     /**
      * @var string
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="education", type="string", length=255 , nullable=true)
      */
     private $education;
 
     /**
      * @var integer
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="income", type="integer" , nullable=true)
      */
     private $income;
 
     /**
      * @var integer
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="value", type="string" , length=255 , nullable=true)
      */
     private $value;
 
     /**
      * @var integer
-     *
+     * @Gedmo\Versioned
      * @ORM\Column(name="relationship", type="string" , length=255 , nullable=true)
      */
     private $relationship;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="deleted_at", type="datetime" , nullable=true)
      */
     private $deletedAt;
@@ -98,6 +99,7 @@ class Fixed
     private $connect;
 
     /**
+     * @Gedmo\Versioned
      * @ORM\Column(name="connect_id" , type="integer" , nullable=true )
      */
     private $connectId;

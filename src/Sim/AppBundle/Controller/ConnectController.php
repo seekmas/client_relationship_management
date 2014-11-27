@@ -72,10 +72,10 @@ class ConnectController extends Controller
     }
 
     /**
-     * @Route("/{connect_id}/fixed_property" , name="connect_fixed")
+     * @Route("/{connect_id}/property/{fluent_id}" , name="connect_fixed" , defaults={"fluent_id": 0})
      * @Template()
      */
-    public function fixedAction(Request $request , $connect_id)
+    public function fixedAction(Request $request , $connect_id , $fluent_id = 0)
     {
 
         $em = $this->getManager();
@@ -91,11 +91,18 @@ class ConnectController extends Controller
             $fixed->setConnect($connect);
             $em->persist($fixed);
             $em->flush();
-            return $this->redirect('connect_edit' , ['connect_id' => $connect_id]);
+            return $this->redirect('connect_fixed' , ['connect_id' => $connect_id]);
         }
 
-        $fluent = new Fluent();
+        if($fluent_id == 0)
+        {
+            $fluent = new Fluent();
+        }else
+        {
+            $fluent = $this->get('fluent')->find($fluent_id);
+        }
         $type = new FluentType();
+
         $fluent->setFixed($fixed);
         $f_form = $this->getForm($type,$fluent,$request);
         $this->processForm($f_form,$fluent);
@@ -103,8 +110,7 @@ class ConnectController extends Controller
         {
             $em->persist($fluent);
             $em->flush();
-
-
+            return $this->redirect('connect_fixed' , ['connect_id' => $connect_id]);
         }
 
         return [

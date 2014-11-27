@@ -10,10 +10,7 @@
     <link href="{{ asset('dist/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/css/doc.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/css/p.css') }}" rel="stylesheet">
-
     <link href="{{ asset('simapp/css/main.css') }}" rel="stylesheet">
-
-
     <link href="{{ asset('datetime-picker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -22,10 +19,18 @@
     <![endif]-->
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    {% block stylesheets %}
+        {% stylesheets filter='cssrewrite'
+        'bundles/pinanoselect2/css/select2.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
     <link rel="icon" href="/favicon.ico">
     <script>
         var _hmt = _hmt || [];
     </script>
+
 </head>
 <body>
 
@@ -65,7 +70,7 @@
 </footer>
 
 
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+<script src="{{ asset('jquery.js') }}"></script>
 <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('datetime-picker/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{ asset('datetime-picker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}" charset="UTF-8"></script>
@@ -108,6 +113,20 @@
         });
 
     });
+</script>
+
+{% block javascripts %}
+    {% javascripts
+    '@PinanoSelect2Bundle/Resources/public/js/select2.min.js'
+    '@PinanoSelect2Bundle/Resources/public/js/select2_locale_zh-CN.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+<script>
+    $(document).ready(function() { $("select").select2({ placeholder: "Select a State",
+        allowClear: true}); });
 </script>
 
 {% block js %}{% endblock %}

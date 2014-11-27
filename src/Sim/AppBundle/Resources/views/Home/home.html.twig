@@ -1,39 +1,52 @@
 {% extends "SimAppBundle::layouts.html.twig" %}
 
 {% block body %}
-
+    
         <div class="container">
             <div class="row">
 
                 <div class="col-md-6">
 
                     <div class="page-header">
-                        <h1>数据操作记录</h1>
+                        <h1>操作日志</h1>
                     </div>
 
-                {% for log in logs %}
+                    {% for log in logs %}
 
-                        <div class="log_info">
+                            <div class="log_info">
 
-                            <span class="log_icon">
-                            {% if log.action == 'create' %}
-                                <i class="fa fa-plus"></i>
-                            {% elseif log.action == 'update' %}
-                                <i class="fa fa-refresh"></i>
-                            {% endif %}
-                            </span>
+                                <span class="log_icon">
+                                {% if log.action == 'create' %}
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i>
+                                        <i class="fa fa-plus fa-stack-1x"></i>
+                                    </span>
+                                {% elseif log.action == 'update' %}
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i>
+                                        <i class="fa fa-refresh fa-stack-1x"></i>
+                                    </span>
+                                {% elseif log.action == 'remove' %}
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i>
+                                        <i class="fa fa-trash fa-stack-1x"></i>
+                                    </span>
+                                {% endif %}
+                                </span>
 
-                            <a href="#">{{ log.username }}</a>
-                            {{ log.action | translate }} 了 <a href="">{{ log.objectClass | translate }}</a> 的信息:
+                                <a href="#">{{ log.username }}</a>
+                                {{ log.action | translate }} 了 <a href="">{{ log.objectClass | translate }}</a> 的信息:
 
-                            <strong>{{ log | log_to_string }}</strong>
+                                <strong>{{ log | log_to_string | raw }}</strong>
 
 
-                            <span class="time">{{ time_diff(log.loggedAt) }}</span>
+                                <span class="time">{{ time_diff(log.loggedAt) }}</span>
 
-                        </div>
+                            </div>
 
-                {% endfor %}
+                    {% endfor %}
+
+                    {{ knp_pagination_render(logs) }}
                 </div>
 
             </div>
