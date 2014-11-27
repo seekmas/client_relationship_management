@@ -15,6 +15,7 @@ class DropController extends Controller
      */
     public function dropFluentAction(Request $request , $fluent_id)
     {
+
         $em = $this->getManager();
 
         $fluent = $this->get('fluent')->find($fluent_id);
@@ -22,6 +23,8 @@ class DropController extends Controller
         $em->remove($fluent);
 
         $em->flush();
+
+        $this->alert('删除成功' , '自定义客户资料 删除成功' );
 
         return $this->jump($request->headers->get('referer'));
     }

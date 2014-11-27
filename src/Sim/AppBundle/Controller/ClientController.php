@@ -55,6 +55,8 @@ class ClientController extends Controller
                 $em->flush();
             }
 
+            $this->alert('更新成功' , '客户信息创建成功' );
+
             return $this->redirect('edit_client' , ['client_id' => $client->getId()]);
         }
 
@@ -92,6 +94,7 @@ class ClientController extends Controller
             $client->setInitial($this->get('string_utils')->pinyin($client->getName()));
             $em->persist($client);
             $em->flush();
+            $this->alert('更新成功' , '固定客户资料 更新成功' );
 
             return $this->redirect('update_client' , ['client_id' => $client->getId()]);
         }
@@ -107,6 +110,9 @@ class ClientController extends Controller
             $fluent->setClient($client);
             $em->persist($fluent);
             $em->flush();
+
+            $this->alert('更新成功' , '自定义客户资料 更新成功' );
+
             return $this->redirect('update_client' , ['client_id' => $client->getId()]);
         }
 

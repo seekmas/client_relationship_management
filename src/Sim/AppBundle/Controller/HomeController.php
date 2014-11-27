@@ -16,6 +16,8 @@ class HomeController extends Controller
      */
     public function homeAction(Request $request)
     {
+        $this->alert('访问成功' , '欢迎访问' );
+
         $logs = $this->get('log');
         $logs = $this->get('page')->get($logs);
         return ['logs' => $logs];
@@ -37,7 +39,9 @@ class HomeController extends Controller
         {
             $em->persist($connect);
             $em->flush();
-            return $this->redirect('home');
+            $this->alert('创建成功' , '联系人 创建成功' );
+
+            return $this->redirect('connect_edit' , ['connect_id'=> $connect->getId()]);
         }
 
         return [

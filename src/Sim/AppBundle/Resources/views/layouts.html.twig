@@ -12,6 +12,7 @@
     <link href="{{ asset('dist/css/p.css') }}" rel="stylesheet">
     <link href="{{ asset('simapp/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('datetime-picker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('notify/pnotify.custom.min.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,6 +73,8 @@
 
 <script src="{{ asset('jquery.js') }}"></script>
 <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('notify/pnotify.custom.min.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('datetime-picker/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{ asset('datetime-picker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}" charset="UTF-8"></script>
 <script type="text/javascript">
@@ -113,7 +116,29 @@
         });
 
     });
+
+
+
+
 </script>
+
+{% for type, messages in app.session.flashbag.all() %}
+    {% for message in messages %}
+        <script>
+        PNotify.desktop.permission();
+        (new PNotify({
+        title: '{{ type }}',
+        text: '{{ message }}',
+        desktop: {
+        desktop: true,
+        icon: 'https://avatars1.githubusercontent.com/u/1488116?v=3&s=460'
+        }
+        })).get().click(function(e) {
+        if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target)) return;
+        });
+        </script>
+    {% endfor %}
+{% endfor %}
 
 {% block javascripts %}
     {% javascripts

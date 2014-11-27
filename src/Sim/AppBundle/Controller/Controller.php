@@ -51,4 +51,10 @@ class Controller extends CoreController
         return $this->getDoctrine()->getManager();
     }
 
+    public function alert($title,$content)
+    {
+        $flash = $this->get('session')->getFlashBag();
+        $flash->add($title,$content);
+    }
+
 }

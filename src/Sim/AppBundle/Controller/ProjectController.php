@@ -36,6 +36,7 @@ class ProjectController extends Controller
         {
             $em->persist($project);
             $em->flush();
+            $this->alert('创建成功' , '项目 创建成功' );
 
             return $this->redirect('edit_project' , ['project_id' => $project->getId()] );
         }
@@ -86,6 +87,8 @@ class ProjectController extends Controller
             $em = $this->getManager();
             $em->persist($project);
             $em->flush();
+            $this->alert('更新成功' , '项目 更新成功' );
+
             return $this->redirect('edit_project' , ['project_id' => $project->getId()]);
         }
 
@@ -110,6 +113,8 @@ class ProjectController extends Controller
         {
             $em->persist($project);
             $em->flush();
+
+            $this->alert('更新成功' , '项目基本信息 更新成功' );
             return $this->redirect('update_project_basic_info' , ['project_id' => $project_id]);
         }
 
@@ -122,6 +127,7 @@ class ProjectController extends Controller
             $fluent->setProject($project);
             $em->persist($fluent);
             $em->flush();
+            $this->alert('更新成功' , '项目自定义信息 更新成功' );
 
             return $this->redirect('update_project_basic_info' , ['project_id' => $project_id]);
         }
@@ -151,6 +157,9 @@ class ProjectController extends Controller
             $connect->setProject($project);
             $em->persist($connect);
             $em->flush();
+            $this->alert('添加成功' , '项目联系人 更新成功' );
+
+
             return $this->redirect('edit_project' , ['project_id' => $project_id]);
         }
 
@@ -161,6 +170,7 @@ class ProjectController extends Controller
         {
             $em->persist($project);
             $em->flush();
+            $this->alert('关联成功' , '项目联系人 关联成功' );
 
             return $this->redirect('edit_project' , ['project_id' => $project_id]);
         }

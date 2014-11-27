@@ -29,6 +29,7 @@ class EventController extends Controller
         {
             $em->persist($event);
             $em->flush();
+            $this->alert('创建成功' , '事件 创建成功' );
 
             return $this->redirect('event_linkto' , ['event_id' => $event->getId()]);
         }
@@ -58,6 +59,7 @@ class EventController extends Controller
             $event->setProject($project);
             $em->persist($event);
             $em->flush();
+            $this->alert('关联到项目成功' , '事件到项目 关联成功' );
 
             return $this->redirect('event_linkto' , ['event_id' => $event_id]);
         }
@@ -71,6 +73,7 @@ class EventController extends Controller
             $em = $this->getManager();
             $em->persist($event);
             $em->flush();
+            $this->alert('关联到项目成功' , '事件到项目 关联成功' );
 
             return $this->redirect('edit_project' , ['project_id' => $event->getProject()->getId()]);
         }
@@ -104,6 +107,7 @@ class EventController extends Controller
 
             $em->persist($event);
             $em->flush();
+            $this->alert('创建成功' , '事件 创建成功' );
 
             return $this->redirect('edit_project' , ['project_id' => $project_id]);
         }

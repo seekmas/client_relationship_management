@@ -61,7 +61,7 @@ class ConnectController extends Controller
         {
             $em->persist($connect);
             $em->flush();
-
+            $this->alert('更新成功' , '联系人 更新成功' );
             return $this->redirect('connect_edit' , ['connect_id' => $connect_id]);
         }
 
@@ -91,6 +91,8 @@ class ConnectController extends Controller
             $fixed->setConnect($connect);
             $em->persist($fixed);
             $em->flush();
+            $this->alert('更新成功' , '联系人资料 更新成功' );
+
             return $this->redirect('connect_fixed' , ['connect_id' => $connect_id]);
         }
 
@@ -110,6 +112,7 @@ class ConnectController extends Controller
         {
             $em->persist($fluent);
             $em->flush();
+            $this->alert('更新成功' , '联系人自定义字段资料 更新成功' );
             return $this->redirect('connect_fixed' , ['connect_id' => $connect_id]);
         }
 
