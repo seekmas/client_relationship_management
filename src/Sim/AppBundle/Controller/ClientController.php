@@ -19,12 +19,11 @@ class ClientController extends Controller
     public function homeAction()
     {
         $clients = $this->get('client')
-                        ->createQueryBuilder('c')
-                        ->select('c')
-                        ->orderBy('c.initial')
-                        ->getQuery()
-                        ->getResult()
-        ;
+            ->createQueryBuilder('c')
+            ->select('c')
+            ->orderBy('c.initial')
+            ->getQuery()
+            ->getResult();
 
         return ['clients' => $clients];
     }
@@ -33,35 +32,34 @@ class ClientController extends Controller
      * @Route("/create/{project_id}" , name="create_client" , defaults={"project_id": 0})
      * @Template()
      */
-    public function createAction(Request $request , $project_id = 0)
+    public function createAction(Request $request, $project_id = 0)
     {
+        $translator = $this->get('translator');
         $em = $this->getManager();
         $client = new Client();
         $type = new ClientType();
-        $form = $this->getForm($type,$client,$request);
-        $this->processForm($form,$client);
-        if($form->isValid())
-        {
+        $form = $this->getForm($type, $client, $request);
+        $this->processForm($form, $client);
+        if ($form->isValid()) {
 
             $client->setInitial($this->get('string_utils')->pinyin($client->getName()));
 
             $em->persist($client);
             $em->flush();
-            if($project_id > 0)
-            {
+            if ($project_id > 0) {
                 $project = $this->get('project')->find($project_id);
                 $project->setClient($client);
                 $em->persist($project);
                 $em->flush();
             }
 
-            $this->alert('更新成功' , '客户信息创建成功' );
+            $this->alert( $translator->trans('message.global.update_success') , $translator->trans('message.client.client_created'));
 
-            return $this->redirect('edit_client' , ['client_id' => $client->getId()]);
+            return $this->redirect('edit_client', ['client_id' => $client->getId()]);
         }
 
         return [
-            'form' => $form->createView() ,
+            'form' => $form->createView(),
         ];
     }
 
@@ -69,11 +67,11 @@ class ClientController extends Controller
      * @Route("/{client_id}/edit" , name="edit_client")
      * @Template()
      */
-    public function editAction(Request $request , $client_id)
+    public function editAction(Request $request, $client_id)
     {
         $client = $this->get('client')->find($client_id);
         return [
-            'client' => $client ,
+            'client' => $client,
         ];
     }
 
@@ -81,45 +79,46 @@ class ClientController extends Controller
      * @Route("/{client_id}/update/{fluent_id}" , name="update_client" , defaults={"fluent_id": 0})
      * @Template()
      */
-    public function updateAction(Request $request , $client_id , $fluent_id = 0)
+    public function updateAction(Request $request, $client_id, $fluent_id = 0)
     {
+        $translator = $this->get('translator');
         $em = $this->getManager();
 
         $client = $this->get('client')->find($client_id);
         $type = new ClientType();
-        $form = $this->getForm($type,$client,$request);
-        $this->processForm($form , $client);
-        if($form->isValid())
-        {
+        $form = $this->getForm($type, $client, $request);
+        $this->processForm($form, $client);
+        if ($form->isValid()) {
             $client->setInitial($this->get('string_utils')->pinyin($client->getName()));
             $em->persist($client);
             $em->flush();
-            $this->alert('更新成功' , '固定客户资料 更新成功' );
+            $translator = $this->get('translator');
 
-            return $this->redirect('update_client' , ['client_id' => $client->getId()]);
+            $this->alert( $translator->trans('message.global.update_success') , $translator->trans('message.client.fixed_update_success'));
+
+            return $this->redirect('update_client', ['client_id' => $client->getId()]);
         }
 
 
         $fluent = $fluent_id == 0 ? new Fluent() : $this->get('fluent')->find($fluent_id);
 
         $fluent_type = new FluentType();
-        $fluent_form = $this->getForm($fluent_type , $fluent , $request);
-        $this->processForm($fluent_form , $fluent);
-        if($fluent_form->isValid())
-        {
+        $fluent_form = $this->getForm($fluent_type, $fluent, $request);
+        $this->processForm($fluent_form, $fluent);
+        if ($fluent_form->isValid()) {
             $fluent->setClient($client);
             $em->persist($fluent);
             $em->flush();
+            $this->alert( $translator->trans('message.global.update_success') , $translator->trans('message.client.user_defined_update_success'));
 
-            $this->alert('更新成功' , '自定义客户资料 更新成功' );
-
-            return $this->redirect('update_client' , ['client_id' => $client->getId()]);
+            return $this->redirect('update_client', ['client_id' => $client->getId()]);
         }
 
         return [
-            'client' => $client ,
-            'form'   => $form->createView() ,
-            'fluent_form' => $fluent_form->createView() ,
+            'client' => $client,
+            'form' => $form->createView(),
+            'fluent_form' => $fluent_form->createView(),
+            'high_light' => $fluent_id == 0 ? false : true
         ];
     }
 }

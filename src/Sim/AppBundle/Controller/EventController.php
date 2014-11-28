@@ -19,6 +19,7 @@ class EventController extends Controller
      */
     public function createAction(Request $request)
     {
+        $translator = $this->get('translator');
         $em = $this->getManager();
 
         $event = new Event();
@@ -29,7 +30,7 @@ class EventController extends Controller
         {
             $em->persist($event);
             $em->flush();
-            $this->alert('创建成功' , '事件 创建成功' );
+            $this->alert($translator->trans('message.event.create_success') ,$translator->trans('message.event.event_is_created'));
 
             return $this->redirect('event_linkto' , ['event_id' => $event->getId()]);
         }
@@ -43,7 +44,7 @@ class EventController extends Controller
      */
     public function linktoAction(Request $request , $event_id)
     {
-
+        $translator = $this->get('translator');
         $em = $this->getManager();
         $event = $this->get('event')->find($event_id);
 
@@ -59,7 +60,7 @@ class EventController extends Controller
             $event->setProject($project);
             $em->persist($event);
             $em->flush();
-            $this->alert('关联到项目成功' , '事件到项目 关联成功' );
+            $this->alert($translator->trans('message.event.link_success') ,$translator->trans('message.event.link_to_project') );
 
             return $this->redirect('event_linkto' , ['event_id' => $event_id]);
         }
@@ -73,7 +74,7 @@ class EventController extends Controller
             $em = $this->getManager();
             $em->persist($event);
             $em->flush();
-            $this->alert('关联到项目成功' , '事件到项目 关联成功' );
+            $this->alert($translator->trans('message.event.link_success') ,$translator->trans('message.event.link_to_project') );
 
             return $this->redirect('edit_project' , ['project_id' => $event->getProject()->getId()]);
         }
@@ -107,7 +108,7 @@ class EventController extends Controller
 
             $em->persist($event);
             $em->flush();
-            $this->alert('创建成功' , '事件 创建成功' );
+            $this->alert($translator->trans('message.event.create_success') ,$translator->trans('message.event.event_is_created'));
 
             return $this->redirect('edit_project' , ['project_id' => $project_id]);
         }

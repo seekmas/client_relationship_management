@@ -25,6 +25,9 @@ class AppKernel extends Kernel
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new Pinano\Select2Bundle\PinanoSelect2Bundle(),
+
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

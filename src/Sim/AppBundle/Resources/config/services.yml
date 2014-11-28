@@ -10,6 +10,12 @@ services:
         tags:
            - { name: twig.extension }
 
+    twig.extension.filters:
+        class: Sim\AppBundle\Twig\FiltersExtension
+        arguments: [@service_container]
+        tags:
+           - { name: twig.extension }
+
     event:
         class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: doctrine

@@ -52,6 +52,8 @@ class ConnectController extends Controller
      */
     public function updateAction(Request $request , $connect_id)
     {
+        $translator = $this->get('translator');
+
         $em = $this->getManager();
         $connect = $this->get('connect')->find($connect_id);
         $type = new ConnectType();
@@ -61,7 +63,10 @@ class ConnectController extends Controller
         {
             $em->persist($connect);
             $em->flush();
-            $this->alert('更新成功' , '联系人 更新成功' );
+
+
+            $this->alert( $translator->trans('message.global.update_success') , $translator->trans('message.connect.contact_way_update_success') );
+
             return $this->redirect('connect_edit' , ['connect_id' => $connect_id]);
         }
 
@@ -77,12 +82,26 @@ class ConnectController extends Controller
      */
     public function fixedAction(Request $request , $connect_id , $fluent_id = 0)
     {
-
+        $translator = $this->get('translator');
         $em = $this->getManager();
-
         $connect = $this->get('connect')->find($connect_id);
 
-        $fixed = $connect->getFixed() ? $connect->getFixed() : new Fixed();
+        if($connect->getFixed())
+        {
+            $fixed = $connect->getFixed();
+        }else
+        {
+            $fixed = new Fixed();
+
+            $fixed->setCreatedAt(new \Datetime());
+            $fixed->setUpdatedAt(new \Datetime());
+            $fixed->setConnect($connect);
+
+            $em->persist($fixed);
+            $em->flush();
+        }
+
+
         $type = new FixedType();
         $form = $this->getForm($type ,$fixed ,$request  );
         $this->processForm($form , $fixed);
@@ -91,7 +110,7 @@ class ConnectController extends Controller
             $fixed->setConnect($connect);
             $em->persist($fixed);
             $em->flush();
-            $this->alert('更新成功' , '联系人资料 更新成功' );
+            $this->alert($translator->trans('message.global.update_success') , $translator->trans('message.connect.fixed_update_success'));
 
             return $this->redirect('connect_fixed' , ['connect_id' => $connect_id]);
         }
@@ -112,7 +131,7 @@ class ConnectController extends Controller
         {
             $em->persist($fluent);
             $em->flush();
-            $this->alert('更新成功' , '联系人自定义字段资料 更新成功' );
+            $this->alert($translator->trans('message.global.update_success') , $translator->trans('message.connect.user_defined_update_success'));
             return $this->redirect('connect_fixed' , ['connect_id' => $connect_id]);
         }
 

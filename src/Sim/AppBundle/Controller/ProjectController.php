@@ -24,7 +24,7 @@ class ProjectController extends Controller
      */
     public function createAction(Request $request)
     {
-
+        $translator = $this->get('translator');
         $em = $this->getManager();
 
         $project = new Project();
@@ -36,7 +36,7 @@ class ProjectController extends Controller
         {
             $em->persist($project);
             $em->flush();
-            $this->alert('创建成功' , '项目 创建成功' );
+            $this->alert($translator->trans('message.project.create_success') ,$translator->trans('message.project.new_project_is_created'));
 
             return $this->redirect('edit_project' , ['project_id' => $project->getId()] );
         }
@@ -72,11 +72,10 @@ class ProjectController extends Controller
      */
     public function editAction(Request $request , $project_id)
     {
+        $translator = $this->get('translator');
+
         $project = $this->get('project')->find($project_id);
-
-
         $select = new SelectClientType();
-
         $form = $this->createForm($select);
         $form->handleRequest($request);
 
@@ -87,7 +86,8 @@ class ProjectController extends Controller
             $em = $this->getManager();
             $em->persist($project);
             $em->flush();
-            $this->alert('更新成功' , '项目 更新成功' );
+            $this->alert($translator->trans('message.project.create_success') ,$translator->trans('message.project.project_is_updated'));
+
 
             return $this->redirect('edit_project' , ['project_id' => $project->getId()]);
         }
@@ -104,7 +104,9 @@ class ProjectController extends Controller
      */
     public function updateAction(Request $request , $project_id , $fluent_id = 0)
     {
+        $translator = $this->get('translator');
         $em = $this->getManager();
+
         $project = $this->get('project')->find($project_id);
         $type = new ProjectType();
         $form = $this->getForm($type , $project , $request);
@@ -113,8 +115,8 @@ class ProjectController extends Controller
         {
             $em->persist($project);
             $em->flush();
+            $this->alert($translator->trans('message.project.create_success') ,$translator->trans('message.project.fixed_update_success'));
 
-            $this->alert('更新成功' , '项目基本信息 更新成功' );
             return $this->redirect('update_project_basic_info' , ['project_id' => $project_id]);
         }
 
@@ -127,7 +129,7 @@ class ProjectController extends Controller
             $fluent->setProject($project);
             $em->persist($fluent);
             $em->flush();
-            $this->alert('更新成功' , '项目自定义信息 更新成功' );
+            $this->alert($translator->trans('message.project.create_success') ,$translator->trans('message.project.user_defined_update_success'));
 
             return $this->redirect('update_project_basic_info' , ['project_id' => $project_id]);
         }
@@ -145,6 +147,7 @@ class ProjectController extends Controller
      */
     public function addConnectAction(Request $request , $project_id)
     {
+        $translator = $this->get('translator');
         $em = $this->getManager();
         $project = $this->get('project')->find($project_id);
 
@@ -157,8 +160,7 @@ class ProjectController extends Controller
             $connect->setProject($project);
             $em->persist($connect);
             $em->flush();
-            $this->alert('添加成功' , '项目联系人 更新成功' );
-
+            $this->alert($translator->trans('message.project.create_success') ,$translator->trans('message.project.contacts_of_project_update_success'));
 
             return $this->redirect('edit_project' , ['project_id' => $project_id]);
         }
@@ -170,7 +172,7 @@ class ProjectController extends Controller
         {
             $em->persist($project);
             $em->flush();
-            $this->alert('关联成功' , '项目联系人 关联成功' );
+            $this->alert($translator->trans('message.project.link_success') ,$translator->trans('message.project.link_to_project'));
 
             return $this->redirect('edit_project' , ['project_id' => $project_id]);
         }

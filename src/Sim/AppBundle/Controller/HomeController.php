@@ -16,8 +16,7 @@ class HomeController extends Controller
      */
     public function homeAction(Request $request)
     {
-        $this->alert('访问成功' , '欢迎访问' );
-
+        //$this->alert('访问成功' , '欢迎访问' );
         $logs = $this->get('log');
         $logs = $this->get('page')->get($logs);
         return ['logs' => $logs];

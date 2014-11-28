@@ -1,0 +1,28 @@
+message:
+    global:
+        update_success: Successfully updated
+    drop:
+        remove_success: Successfully removed
+        user_defined_remove_success: The user-defined information is removed
+    client:
+        client_created: A new client is created
+        fixed_update_success: The fixed profile of client is updated
+        user_defined_update_success: The user-defined profile of client is updated
+    connect:
+        contact_way_update_success: The contact way of contacts is updated
+        fixed_update_success: The fixed profile of contacts is updated
+        user_defined_update_success: The user-defined profile of contacts is updated
+    event:
+        create_success: Successfully created
+        event_is_created: A new event is created
+        link_success: Operate successfully
+        link_to_project: The new event is related to a project
+    project:
+        create_success: Successfully created
+        new_project_is_created: A new project is created
+        project_is_updated: The project is updated
+        fixed_update_success: The fixed profile of project is updated
+        user_defined_update_success: The user-defined profile of project is updated
+        contacts_of_project_update_success: The contacts of project is updated
+        link_success: Operate successfully
+        link_to_project: The contacts is related to a project

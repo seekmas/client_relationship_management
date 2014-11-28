@@ -26,7 +26,10 @@
             </h3>
             </div>
 
-            {{ form(fluent_form) }}
+            <div {% if high_light %}class="high_light"{% else %}class="high_light_disable"{% endif %}>
+                {{ form(fluent_form) }}
+            </div>
+
             <hr/>
 
             <table class="table">

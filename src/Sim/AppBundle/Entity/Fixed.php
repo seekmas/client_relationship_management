@@ -402,4 +402,9 @@ class Fixed
         $this->fluent = $fluent;
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getConnect()->getName();
+    }
 }

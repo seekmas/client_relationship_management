@@ -37,8 +37,7 @@
                                 <a href="#">{{ log.username }}</a>
                                 {{ log.action | translate }} 了 <a href="">{{ log.objectClass | translate }}</a> 的信息:
 
-                                <strong>{{ log | log_to_string | raw }}</strong>
-
+                                <strong>{{ log | log_to_entity | raw }}</strong>
 
                                 <span class="time">{{ time_diff(log.loggedAt) }}</span>
 
