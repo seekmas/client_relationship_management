@@ -9,7 +9,7 @@ message:
         fixed_update_success: The fixed profile of client is updated
         user_defined_update_success: The user-defined profile of client is updated
     connect:
-        contact_way_update_success: The contact way of contacts is updated
+        contact_way_update_success: The contact's informations of contacts is updated
         fixed_update_success: The fixed profile of contacts is updated
         user_defined_update_success: The user-defined profile of contacts is updated
     event:
@@ -26,3 +26,93 @@ message:
         contacts_of_project_update_success: The contacts of project is updated
         link_success: Operate successfully
         link_to_project: The contacts is related to a project
+    home:
+        create_success: Successfully created
+        contacts_is_created: A new contacts is created
+
+label:
+    selectProject:
+        select: 选择项目
+        list_of_projects: 项目列表
+    selectConnect:
+        select: 选择联系人
+        list_of_connect: 联系人列表
+    selectClient:
+        select: 选择客户
+        list_of_client: 客户列表
+    fluent:
+        subject: 属性
+        value: 值
+        save: 添加/更新
+    project:
+        projectName: 项目名
+        signAt: 合同日期
+        startAt: 项目开始日期
+        endAt: 项目完成日期
+        contactPayment: 合同金额
+        description: 合同描述
+        save: 创建/更新项目
+    client:
+        name: 企业客户名
+        description: 企业客户的介绍( 例如行业,业务 )
+        save: 添加/更新客户
+    connect:
+        name: 联系人称呼
+        email: Email
+        qq: QQ
+        phone: 固定电话
+        mobile: 手机
+        fax: 传真
+        weibo: 新浪微博
+        twitter: Twitter
+        facebook: Facebook
+        linkedin: 领英网
+        address: 地址
+        blog: 博客
+        website: 网站
+        description: 联系方式描述
+        save: 添加/更新联系方式
+    event:
+        subject: 事件名
+        content: 事件内容
+        save: 创建 , 下一步
+    fixed:
+        gender:
+            name: 性别
+            male: 男
+            female: 女
+        age: 年龄
+        work: 工作
+        education:
+            name: 教育程度
+            unknown: 未知
+            uneducated: 未接受教育
+            preschool: 学前教育
+            primary_school: 小学
+            junior_senior: 中学
+            college: 专科/学院
+            university: 本科/大学
+            master: 硕士研究生
+            phd: 博士研究生
+        income: 收入
+        value:
+            name: 价值度
+            general: 一般
+            potential: 潜在
+            important: 重要
+            vip: 非常重要
+            long_term: 长期合作
+        relationship:
+            name: 联系人关系
+            empty: 无
+            requirement_not_clear: 需求不明确客户
+            requirement_clear: 需求明确客户
+            in_cooperation: 合作中
+            terminate: 合作终止
+            finish: 合作完成
+        save: 更新属性
+
+
+
+
+

@@ -94,7 +94,7 @@ class EventController extends Controller
      */
     public function createFromProjectAction( Request $request , $project_id)
     {
-
+        $translator = $this->get('translator');
         $em = $this->getManager();
         $event = new Event();
         $type = new EventType();

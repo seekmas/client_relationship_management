@@ -34,19 +34,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/navigator.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Builder/home.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Home/create.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Entity/Linkman.php" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Client/create.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectClientType.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Entity/Log.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Panigator/Panigator.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Panigator/Paginator.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Paginator/Paginator.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Project/addConnect.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectConnectType.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Entity/Connect.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Entity/Event.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Connect/update.html.twig" />
@@ -54,14 +46,12 @@
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Connect/fixed.html.twig" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Project/home.html.twig" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Client/edit.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Connect/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Entity/Project.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Entity/Fluent.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Project/update.html.twig" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Project/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Utils/StringUtils.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Client/home.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/ClientType.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/Controller.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/layouts.html.twig" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
@@ -70,8 +60,6 @@
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Twig/FiltersExtension.php" />
         <option value="$PROJECT_DIR$/app/logs/prod.log" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/translations/messages.zh_CN.yml" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/HomeController.php" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/web/dist/css/p.css" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Client/update.html.twig" />
@@ -81,10 +69,22 @@
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/ClientController.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/ConnectController.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/DropController.php" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/EventController.php" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Home/home.html.twig" />
-        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/translations/messages.en.yml" />
         <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/ProjectController.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/EventController.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Controller/HomeController.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/translations/messages.zh_CN.yml" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/ClientType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/ConnectType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/EventType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/FixedType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/FluentType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/ProjectType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectClientType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectConnectType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectProjectType.php" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/translations/messages.en.yml" />
+        <option value="$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Connect/edit.html.twig" />
       </list>
     </option>
   </component>
@@ -284,70 +284,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Client/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35512367" vertical-offset="39" max-vertical-offset="660">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Connect/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.103626944" vertical-offset="2070" max-vertical-offset="3735">
-          <caret line="134" column="22" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Connect/update.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44041452" vertical-offset="0" max-vertical-offset="579">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Entity/Project.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46996465" vertical-offset="6604" max-vertical-offset="7170">
-          <caret line="460" column="0" selection-start-line="460" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Entity/Fluent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.507772" vertical-offset="696" max-vertical-offset="4140">
-          <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Project/update.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38860103" vertical-offset="0" max-vertical-offset="1065">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Project/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.958333" vertical-offset="115" max-vertical-offset="705">
-          <caret line="30" column="158" selection-start-line="30" selection-start-column="158" selection-end-line="30" selection-end-column="158" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Project/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.795053" vertical-offset="720" max-vertical-offset="1755">
-          <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Utils/StringUtils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9876325" vertical-offset="0" max-vertical-offset="1755">
-          <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Client/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2849741" vertical-offset="0" max-vertical-offset="615">
@@ -381,14 +317,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="603">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/ClientType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41450778" vertical-offset="0" max-vertical-offset="690">
-          <caret line="18" column="70" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -554,14 +482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/translations/messages.zh_CN.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Client/update.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49222797" vertical-offset="135" max-vertical-offset="945">
@@ -578,25 +498,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Controller/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3626943" vertical-offset="0" max-vertical-offset="780">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Entity/Event.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3675">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Entity/Connect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.036269" vertical-offset="6390" max-vertical-offset="9105">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -652,14 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Controller/EventController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39045936" vertical-offset="1339" max-vertical-offset="1905">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Controller/ProjectController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.4522967" vertical-offset="2314" max-vertical-offset="2880">
@@ -678,17 +574,123 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Controller/EventController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.3586574" vertical-offset="0" max-vertical-offset="1905">
+          <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Controller/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6784452" vertical-offset="171" max-vertical-offset="795">
+          <caret line="41" column="129" selection-start-line="41" selection-start-column="129" selection-end-line="41" selection-end-column="129" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/translations/messages.zh_CN.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84577113" vertical-offset="0" max-vertical-offset="603">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Entity/Connect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.284974" vertical-offset="5955" max-vertical-offset="9105">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/translations/messages.en.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67164177" vertical-offset="0" max-vertical-offset="603">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <marker date="1417154900000" expanded="true" signature="-1:-1" placeholder="message:" />
-            <marker date="1417154900000" expanded="true" signature="-1:-1" placeholder="drop:" />
-            <marker date="1417154900000" expanded="true" signature="-1:-1" placeholder="client:" />
-            <marker date="1417154900000" expanded="true" signature="-1:-1" placeholder="connect:" />
-            <marker date="1417154900000" expanded="true" signature="-1:-1" placeholder="event:" />
-          </folding>
+        <state vertical-scroll-proportion="0.3034826" vertical-offset="387" max-vertical-offset="1860">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Resources/views/Connect/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25906736" vertical-offset="3000" max-vertical-offset="3735">
+          <caret line="210" column="122" selection-start-line="210" selection-start-column="122" selection-end-line="210" selection-end-column="122" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/ClientType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51258993" vertical-offset="0" max-vertical-offset="690">
+          <caret line="21" column="77" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/ConnectType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83633095" vertical-offset="0" max-vertical-offset="870">
+          <caret line="33" column="73" selection-start-line="33" selection-start-column="73" selection-end-line="33" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/EventType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51258993" vertical-offset="0" max-vertical-offset="690">
+          <caret line="21" column="71" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/FixedType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.373057" vertical-offset="561" max-vertical-offset="1425">
+          <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/FluentType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49222797" vertical-offset="0" max-vertical-offset="690">
+          <caret line="21" column="72" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/ProjectType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6217617" vertical-offset="390" max-vertical-offset="1155">
+          <caret line="52" column="73" selection-start-line="52" selection-start-column="73" selection-end-line="52" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectClientType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12953368" vertical-offset="0" max-vertical-offset="615">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectConnectType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44041452" vertical-offset="0" max-vertical-offset="765">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sim/AppBundle/Form/SelectProjectType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44041452" vertical-offset="0" max-vertical-offset="615">
+          <caret line="18" column="68" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -17,14 +17,14 @@ class SelectConnectType extends AbstractType
         $builder
             ->add('connect' , 'entity' ,
                 [
-                    'label' => '联系人列表',
+                    'label' => 'label.selectConnect.list_of_connect',
                     'class' => 'SimAppBundle:Connect' ,
                     'multiple' => true ,
                 ]
             )
         ;
 
-        $builder->add('save' , 'submit' , ['label' => '选择']);
+        $builder->add('save' , 'submit' , ['label' => 'label.selectConnect.select']);
     }
 
     /**

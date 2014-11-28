@@ -15,11 +15,11 @@ class FluentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('subject' , null , ['label' => '属性'])
-            ->add('value' , null , ['label' => '值'])
+            ->add('subject' , null , ['label' => 'label.fluent.subject'])
+            ->add('value' , null , ['label' => 'label.fluent.value'])
         ;
 
-        $builder->add('save' , 'submit' , ['label' => '添加/更新']);
+        $builder->add('save' , 'submit' , ['label' => 'label.fluent.save']);
     }
     
     /**

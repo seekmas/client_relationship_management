@@ -15,42 +15,42 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('projectName' , null , ['label' => '项目名'])
+            ->add('projectName' , null , ['label' => 'label.project.projectName'])
             ->add('signAt' , null ,
                 [
-                    'label' => '合同日期' ,
+                    'label' => 'label.project.signAt' ,
                     'widget' => 'single_text',
                     'datetimepicker' => true,
                 ]
             )
             ->add('startAt' , null ,
                 [
-                    'label' => '项目开始日期' ,
+                    'label' => 'label.project.startAt' ,
                     'widget' => 'single_text',
                     'datetimepicker' => true,
                 ]
             )
             ->add('endAt' , null ,
                 [
-                    'label' => '项目完成日期' ,
+                    'label' => 'label.project.endAt' ,
                     'widget' => 'single_text',
                     'datetimepicker' => true,
                 ]
             )
             ->add('contactPayment' , null ,
                 [
-                    'label' => '合同金额' ,
+                    'label' => 'label.project.contactPayment' ,
                 ]
             )
             ->add('description' , null ,
                 [
-                    'label'  => '合同描述'
+                    'label'  => 'label.project.description'
                 ]
             )
         ;
 
 
-        $builder->add('save' , 'submit' , ['label' => '创建/更新项目']);
+        $builder->add('save' , 'submit' , ['label' => 'label.project.save']);
     }
     
     /**

@@ -28,8 +28,9 @@ class HomeController extends Controller
      */
     public function createAction(Request $request)
     {
-        $em = $this->getManager();
+        $translator = $this->get('translator');
 
+        $em = $this->getManager();
         $connect = new Connect();
         $type = new ConnectType();
         $form = $this->getForm($type,$connect,$request);
@@ -38,7 +39,7 @@ class HomeController extends Controller
         {
             $em->persist($connect);
             $em->flush();
-            $this->alert('创建成功' , '联系人 创建成功' );
+            $this->alert($translator->trans('message.home.create_success') , $translator->trans('message.home.contacts_is_created'));
 
             return $this->redirect('connect_edit' , ['connect_id'=> $connect->getId()]);
         }

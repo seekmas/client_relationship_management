@@ -16,64 +16,59 @@ class FixedType extends AbstractType
     {
         $builder
             ->add('gender' , 'choice' , [
-                'label' => '性别' ,
-                'choices'   => array(1 => '男', 2 => '女'),
+                'label' => 'label.fixed.gender.name' ,
+                'choices'   => array(1 => 'label.fixed.gender.male', 2 => 'label.fixed.gender.female'),
                 'required'  => false,
             ])
-            ->add('age' , null , ['label' => '年纪'])
-            ->add('work' , null , ['label' => '工作'])
+            ->add('age' , null , ['label' => 'label.fixed.age'])
+            ->add('work' , null , ['label' => 'label.fixed.work'])
             ->add('education' , 'choice' , [
-                'label' => '教育程度',
+                'label' => 'label.fixed.education.name',
                 'choices'   =>
                     [
-                        '未知' => '未知',
-                        '未接受教育' => '未接受教育',
-                        '学前教育' => '学前教育',
-                        '小学' => '小学',
-                        '初高中' => '初高中',
-                        '职专' => '职专' ,
-                        '中技' => '中技' ,
-                        '专科' => '专科',
-                        '本科' => '本科',
-                        '硕士研究生' => '硕士研究生' ,
-                        '博士研究生' => '博士研究生' ,
+                        'label.fixed.education.unknown' => 'label.fixed.education.unknown',
+                        'label.fixed.education.uneducated' => 'label.fixed.education.uneducated',
+                        'label.fixed.education.preschool' => 'label.fixed.education.preschool',
+                        'label.fixed.education.primary_school' => 'label.fixed.education.primary_school',
+                        'label.fixed.education.junior_senior' => 'label.fixed.education.junior_senior',
+                        'label.fixed.education.college' => 'label.fixed.education.college',
+                        'label.fixed.education.university' => 'label.fixed.education.university',
+                        'label.fixed.education.master' => 'label.fixed.education.master' ,
+                        'label.fixed.education.phd' => 'label.fixed.education.phd' ,
                     ],
                 'required'  => false,
             ])
-            ->add('income' , null , ['label' => '收入'])
+            ->add('income' , null , ['label' => 'label.fixed.income'])
             ->add('value' , 'choice' ,
                 [
-                    'label' => '价值度',
+                    'label' => 'label.fixed.value.name',
                     'choices'   =>
                         [
-                            '一般' => '一般',
-                            '潜在' => '潜在' ,
-                            '重要' => '重要' ,
-                            '非常重要' => '非常重要' ,
-                            '长期客户' => '长期客户' ,
+                            'label.fixed.value.general' => 'label.fixed.value.general',
+                            'label.fixed.value.potential' => 'label.fixed.value.potential' ,
+                            'label.fixed.value.important' => 'label.fixed.value.important' ,
+                            'label.fixed.value.vip' => 'label.fixed.value.vip' ,
+                            'label.fixed.value.long_term' => 'label.fixed.value.long_term' ,
                         ],
                     'required'  => false,
                 ])
             ->add('relationship' , 'choice' ,
                 [
-                    'label' => '客户关系',
+                    'label' => 'label.fixed.relationship.name',
                     'choices'   =>
                         [
-
-                            '竞争对手' => '竞争对手' ,
-                            '潜在客户' => '潜在客户',
-                            '培养中客户' => '培养中客户' ,
-                            '需求不明确客户' => '需求不明确客户' ,
-                            '需求明确客户' => '需求明确客户' ,
-                            '合作中' => '合作中' ,
-                            '合作终止' => '合作终止' ,
-                            '合作完成' => '合作完成' ,
+                            'label.fixed.relationship.empty' => 'label.fixed.relationship.empty' ,
+                            'label.fixed.relationship.requirement_not_clear' => 'label.fixed.relationship.requirement_not_clear' ,
+                            'label.fixed.relationship.requirement_clear' => 'label.fixed.relationship.requirement_clear' ,
+                            'label.fixed.relationship.in_cooperation' => 'label.fixed.relationship.in_cooperation' ,
+                            'label.fixed.relationship.terminate' => 'label.fixed.relationship.terminate' ,
+                            'label.fixed.relationship.finish' => 'label.fixed.relationship.finish' ,
                         ],
                     'required'  => false,
                 ])
         ;
 
-        $builder->add('save' , 'submit' , ['label' => '更新属性']);
+        $builder->add('save' , 'submit' , ['label' => 'label.fixed.save']);
     }
     
     /**

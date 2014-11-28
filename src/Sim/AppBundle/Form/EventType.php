@@ -15,11 +15,11 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('subject' , null , ['label' => '事件名'])
-            ->add('content' , null , ['label' => '事件内容'])
+            ->add('subject' , null , ['label' => 'label.event.subject'])
+            ->add('content' , null , ['label' => 'label.event.content'])
         ;
 
-        $builder->add('save' , 'submit' , ['label' => '创建 , 下一步']);
+        $builder->add('save' , 'submit' , ['label' => 'label.event.save']);
     }
     
     /**

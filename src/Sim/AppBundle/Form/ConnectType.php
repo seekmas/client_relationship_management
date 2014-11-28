@@ -15,23 +15,23 @@ class ConnectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name' , null , ['label' => '联系人称呼'])
-            ->add('email' , null , ['label' => 'Email'])
-            ->add('qq' , null , ['label' => 'QQ'])
-            ->add('phone' , null , ['label' => '固定电话'])
-            ->add('mobile' , null , ['label' => '手机'])
-            ->add('fax' , null , ['label' => '传真'])
-            ->add('weibo' , null , ['label' => '新浪微博'])
-            ->add('twitter' , null , ['label' => 'Twitter'])
-            ->add('facebook' , null , ['label' => 'Facebook'])
-            ->add('linkedin' , null , ['label' => '领英网'])
-            ->add('address' , null , ['label' => '地址'])
-            ->add('blog' , null , ['label' => '博客'])
-            ->add('website' , null , ['label' => '网站'])
-            ->add('description' , null , ['label' => '联系方式描述'])
+            ->add('name' , null , ['label' => 'label.connect.name'])
+            ->add('email' , null , ['label' => 'label.connect.email'])
+            ->add('qq' , null , ['label' => 'label.connect.qq'])
+            ->add('phone' , null , ['label' => 'label.connect.phone'])
+            ->add('mobile' , null , ['label' => 'label.connect.mobile'])
+            ->add('fax' , null , ['label' => 'label.connect.fax'])
+            ->add('weibo' , null , ['label' => 'label.connect.weibo'])
+            ->add('twitter' , null , ['label' => 'label.connect.twitter'])
+            ->add('facebook' , null , ['label' => 'label.connect.facebook'])
+            ->add('linkedin' , null , ['label' => 'label.connect.linkedin'])
+            ->add('address' , null , ['label' => 'label.connect.address'])
+            ->add('blog' , null , ['label' => 'label.connect.blog'])
+            ->add('website' , null , ['label' => 'label.connect.website'])
+            ->add('description' , null , ['label' => 'label.connect.description'])
         ;
 
-        $builder->add('save' , 'submit' , ['label' => '添加/更新联系方式']);
+        $builder->add('save' , 'submit' , ['label' => 'label.connect.save']);
     }
     
     /**

@@ -208,7 +208,7 @@
 
                 <tr>
                     <td>项目名</td>
-                    <td><a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project }}</a></td>
+                    <td><h4><a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project | raw }}</a></h4></td>
                 </tr>
 
                 <tr>

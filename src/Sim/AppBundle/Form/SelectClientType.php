@@ -16,13 +16,13 @@ class SelectClientType extends AbstractType
         $builder
             ->add('client' , 'entity' ,
                 [
-                    'label' => '客户列表',
+                    'label' => 'label.selectClient.list_of_client',
                     'class' => 'SimAppBundle:Client'
                 ]
             )
         ;
 
-        $builder->add('save' , 'submit' , ['label' => '选择']);
+        $builder->add('save' , 'submit' , ['label' => 'label.selectClient.select']);
     }
 
 
