@@ -138,6 +138,7 @@ class ProjectController extends Controller
             'project' => $project ,
             'form' => $form->createView() ,
             'fluent_form' => $fluent_form->createView() ,
+            'high_light' => $fluent_id == 0 ? false : true ,
         ];
     }
 

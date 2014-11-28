@@ -140,6 +140,7 @@ class ConnectController extends Controller
             'fixed'     => $fixed ,
             'form'      => $form->createView() ,
             'f_form'    => $f_form->createView() ,
+            'high_light' => $fluent_id == 0 ? false : true ,
         ];
     }
 

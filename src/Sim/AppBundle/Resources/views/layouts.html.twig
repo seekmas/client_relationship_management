@@ -129,8 +129,12 @@
 {% endblock %}
 
 <script>
-    $(document).ready(function() { $("select").select2({ placeholder: "Select a State",
-        allowClear: true}); });
+    $(document).ready(function() {
+        $("select").select2({
+            placeholder: "{{ 'twig.select' | trans | raw }}",
+            allowClear: true
+        });
+    });
 </script>
 
 {% block js %}{% endblock %}

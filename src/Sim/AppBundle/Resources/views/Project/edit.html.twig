@@ -42,15 +42,17 @@
                         </p>
 
                     {% else %}
-                            <div class="col-md-6">
+                        <div class="row high_light">
+                            <div class="col-md-8">
                             选择一个客户
                             {{ form(form) }}
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                             或者<strong>创建一个客户</strong>
                                 <p><a class="btn btn-default" href="{{ url('create_client', {'project_id' : project.id}) }}">创建一个客户</a></p>
                             </div>
+                        </div>
                     {% endif %}
                 </div>
                 <div class="col-md-12">
@@ -66,13 +68,13 @@
                         <dd><i class="fa fa-rmb"></i> {{ project.contactPayment }}</dd>
 
                         <dt>合同签署日期</dt>
-                        <dd>{{ project.signAt | date('Y年m月d日') }}</dd>
+                        <dd>{% if project.signAt %}{{ project.signAt | date('Y年m月d日') }}{% endif %}</dd>
 
                         <dt>项目开始</dt>
-                        <dd>{{ project.startAt | date('Y年m月d日') }}</dd>
+                        <dd>{% if project.startAt %}{{ project.startAt | date('Y年m月d日') }}{% endif %}</dd>
 
                         <dt>项目结束</dt>
-                        <dd>{{ project.endAt | date('Y年m月d日') }}</dd>
+                        <dd>{% if project.endAt %}{{ project.endAt | date('Y年m月d日') }}{% endif %}</dd>
 
                         {% for fluent in project.fluent %}
                         <dt>{{ fluent.subject }}</dt>

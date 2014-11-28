@@ -28,6 +28,7 @@
                     <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">返回</a></small>
                 </h3>
                 <hr/>
+                <div {% if high_light %}class="high_light"{% else %}class="high_light_disable"{% endif %}>
                 {{ form(f_form) }}
                 <br/>
                 <table class="table">
