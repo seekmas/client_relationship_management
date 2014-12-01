@@ -32,87 +32,192 @@ message:
 
 label:
     selectProject:
-        select: 选择项目
-        list_of_projects: 项目列表
+        select: Select a project
+        list_of_projects: List of projects
     selectConnect:
-        select: 选择联系人
-        list_of_connect: 联系人列表
+        select: Select a contacts
+        list_of_connect: List of contacts
     selectClient:
-        select: 选择客户
-        list_of_client: 客户列表
+        select: Select a client
+        list_of_client: List of clients
     fluent:
-        subject: 属性
-        value: 值
-        save: 添加/更新
+        subject: Key
+        value: Value
+        save: Update / Save
     project:
-        projectName: 项目名
-        signAt: 合同日期
-        startAt: 项目开始日期
-        endAt: 项目完成日期
-        contactPayment: 合同金额
-        description: 合同描述
-        save: 创建/更新项目
+        projectName: Project's name
+        signAt: Contract's date
+        startAt: Start at
+        endAt: Close at
+        contactPayment: Fund of project
+        description: Description
+        save: Create / Update
     client:
-        name: 企业客户名
-        description: 企业客户的介绍( 例如行业,业务 )
-        save: 添加/更新客户
+        name: Client's name ( company name )
+        description: Client's description( such as: business records , industry etc. )
+        save: Create / Update
     connect:
-        name: 联系人称呼
+        name: Name
         email: Email
         qq: QQ
-        phone: 固定电话
-        mobile: 手机
-        fax: 传真
-        weibo: 新浪微博
+        phone: Telephone
+        mobile: Mobile Phone
+        fax: Fax
+        weibo: Sina Weibo
         twitter: Twitter
         facebook: Facebook
-        linkedin: 领英网
-        address: 地址
-        blog: 博客
-        website: 网站
-        description: 联系方式描述
-        save: 添加/更新联系方式
+        linkedin: Linkedin
+        address: Address
+        blog: Blog
+        website: Website
+        description: Description
+        save: Create / Update
     event:
-        subject: 事件名
-        content: 事件内容
-        save: 创建 , 下一步
+        subject: Event subject
+        content: Event content
+        save: Create
     fixed:
         gender:
-            name: 性别
-            male: 男
-            female: 女
-        age: 年龄
-        work: 工作
+            name: gender
+            male: male
+            female: female
+        age: age
+        work: work
         education:
-            name: 教育程度
-            unknown: 未知
-            uneducated: 未接受教育
-            preschool: 学前教育
-            primary_school: 小学
-            junior_senior: 中学
-            college: 专科/学院
-            university: 本科/大学
-            master: 硕士研究生
-            phd: 博士研究生
-        income: 收入
+            name: education
+            unknown: unknown
+            uneducated: not accept education
+            preschool: pre-school
+            primary_school: primary school
+            junior_senior: junior / senior high school
+            college: college
+            university: university
+            master: master
+            phd: PhD
+        income: Income
         value:
-            name: 价值度
-            general: 一般
-            potential: 潜在
-            important: 重要
-            vip: 非常重要
-            long_term: 长期合作
+            name: Value
+            general: general
+            potential: potential
+            important: important
+            vip: vital
+            long_term: long term cooperation
         relationship:
-            name: 联系人关系
-            empty: 无
-            requirement_not_clear: 需求不明确客户
-            requirement_clear: 需求明确客户
-            in_cooperation: 合作中
-            terminate: 合作终止
-            finish: 合作完成
-        save: 更新属性
-
+            name: Status
+            empty: None
+            requirement_not_clear: Requirement is not clear
+            requirement_clear: Requirement is clear
+            in_cooperation: Cooperation in progress
+            terminate: Cooperation terminated
+            finish: Cooperation finished
+        save: Update / Save
 twig:
+    home:
+        log: Log of operations
+    key: Key
+    value: Value
+    action: Action
     select: select an item
+    return: Return
+    update: Update
+    edit: Edit
+    remove: Remove
+    add: Add
+    builder:
+        home:
+            create: Create
+            create_event: Create an event
+            create_project: Create a project
+            create_connect: Create a contacts
+            create_client: Create a client
+    client:
+        home:
+            client: List of clients
+        edit:
+            client: client
+            information: information
+            project: project
+            description: description
+            update_info: Update
+        update:
+            fixed_profile: Update fixed information
+            user_defined_profile: Update user-defined information
+    connect:
+        create: Create a new contacts
+        edit:
+            connect_list: List of contacts
+            contact_way: Contact Way
+            profile: Profile
+            name: Name
+            related_projects: Related Projects
+            project_name: Project's Name
+            project_payment: Project's
+            project_signed_at: Project sign at
+            project_started_at: Project start at
+            project_ended_at: Project end at
+        fixed:
+            connect_list: List of contacts
+            update_fixed_profile: Update fixed information
+            update_user_defined_profile: Update user-defined information
+        home:
+            connect_list: List of contacts
+            email: Email
+            description: Description
+        update:
+            connect_list: List of contacts
+            update_connect_way: Update Contact Way
+    event:
+        create:
+            create_a_project: Create an event
+            write_down: Write down the event
+            assign_to_project: assign to a project
+            assign_to_project_description: Assign to the current projects or a new project
+            event_subject: Event subject
+            event_content: Event content
+            to_current: Assign to current projects
+            to_new: Create a project and assgin event
+    project:
+         home:
+            subject: List of projects
+         edit:
+            project: Project
+            event: Project's events
+            progress: Progress
+            new_event: New event
+            client: Client
+            belong_to: Project belongs to
+            select: Select a client ( who is the client of this project )
+            create: Create a client
+            or: Or
+            create_new_client: Create a client
+            project_information: Information of project
+            contacts_of_project: Contacts of project
+         create:
+            subject: Create a project
+         add:
+            add_connect_to: Add a contacts to the project
+            create_new_contacts: Create a new contacts
+            select_from: Select from existed contacts
+         update:
+            project: Project
+            update_fixed: Update fixed information
+            update_user_defined: Update user-defined information
 
+nav:
+    home: Home
+    create: Create
+    contacts: Contacts
+    client: Client
+    project: Project
 
+extension:
+    translation:
+        create: created
+        update: updated
+        remove: removed
+        contacts: a contacts
+        event: an event
+        project: a project
+        client: a client
+        fixed_profile: a fixed profile
+        user_defined_profile: a user-defined profile

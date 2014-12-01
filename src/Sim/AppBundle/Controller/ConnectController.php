@@ -102,7 +102,7 @@ class ConnectController extends Controller
         }
 
 
-        $type = new FixedType();
+        $type = $this->get('fixed_type');
         $form = $this->getForm($type ,$fixed ,$request  );
         $this->processForm($form , $fixed);
         if($form->isValid())

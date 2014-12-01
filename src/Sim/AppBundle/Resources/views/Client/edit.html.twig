@@ -4,15 +4,20 @@
     <div class="row">
         <div class="col-md-12">
             <div class="jumbotron">
-                <h2>客户: {{ client.name }}</h2>
+                <h2>{{ 'twig.client.edit.client' | trans | raw }}: {{ client.name }}</h2>
             </div>
         </div>
 
         <div class="col-md-6">
-            <h3>{{ client.name }} 信息 <small><a href="{{ url('update_client' , {'client_id' : client.id} ) }}">更新信息</a></small></h3>
+            <h3>{{ client.name }} {{ 'twig.client.edit.information' | trans | raw }}
+                <small>
+                    <a href="{{ url('update_client' , {'client_id' : client.id} ) }}">{{ 'twig.client.edit.update_info' | trans | raw }}</a>
+                </small>
+            </h3>
+
             <table class="table">
             <tr>
-                <td>描述</td>
+                <td>{{ 'twig.client.edit.description' | trans | raw }}</td>
                 <td>{{ client.description }}</td>
             </tr>
             {% for fluent in client.fluent %}
@@ -22,7 +27,7 @@
                 </tr>
             {% endfor %}
             </table>
-            <h3>{{ client.name }} 项目</h3>
+            <h3>{{ client.name }} {{ 'twig.client.edit.project' | trans | raw }}</h3>
             <hr/>
             <ul>
                 {% for project in client.project %}

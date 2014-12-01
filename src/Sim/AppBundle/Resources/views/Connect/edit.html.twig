@@ -9,117 +9,113 @@
         <div class="col-md-12">
 
             <div class="page-header">
-                <h2>通讯录 <small>{{ connect.name }}</small></h2>
+                <h2>{{ 'twig.connect.edit.connect_list' | trans | raw }}
+                    <small>{{ connect.name }}</small>
+                </h2>
             </div>
         </div>
     </div>
 
     <div class="row">
             <div class="col-md-6">
-                <h3>联系方式
-                    <small><a href="{{ url('connect_update' , {'connect_id' : connect.id}) }}">更新</a></small>
+                <h3>
+                    {{ 'twig.connect.edit.contact_way' | trans | raw }}
+                    <small><a href="{{ url('connect_update' , {'connect_id' : connect.id}) }}">{{ 'twig.update' | trans | raw }}</a></small>
                 </h3>
 
                 <table class="table">
                     <tr>
-                        <td>联系人称呼</td>
+                        <td>{{ 'label.connect.name' | trans | raw }}</td>
                         <td>{{ connect.name }}</td>
                     </tr>
 
                     {% if connect.email %}
                     <tr>
-                        <td>Email</td>
+                        <td>{{ 'label.connect.email' | trans | raw }}</td>
                         <td>{{ connect.email }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.qq %}
                     <tr>
-                        <td>QQ</td>
+                        <td>{{ 'label.connect.qq' | trans | raw }}</td>
                         <td>{{ connect.qq }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.phone %}
                     <tr>
-                        <td>固定电话</td>
+                        <td>{{ 'label.connect.phone' | trans | raw }}</td>
                         <td>{{ connect.phone }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.mobile %}
                     <tr>
-                        <td>手机</td>
+                        <td>{{ 'label.connect.mobile' | trans | raw }}</td>
                         <td>{{ connect.mobile }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.fax %}
                     <tr>
-                        <td>传真</td>
+                        <td>{{ 'label.connect.fax' | trans | raw }}</td>
                         <td>{{ connect.fax }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.weibo %}
                     <tr>
-                        <td>新浪微博</td>
+                        <td>{{ 'label.connect.weibo' | trans | raw }}</td>
                         <td>{{ connect.weibo }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.twitter %}
                     <tr>
-                        <td>Twitter</td>
+                        <td>{{ 'label.connect.twitter' | trans | raw }}</td>
                         <td>{{ connect.twitter }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.facebook %}
                     <tr>
-                        <td>Facebook</td>
+                        <td>{{ 'label.connect.facebook' | trans | raw }}</td>
                         <td>{{ connect.facebook }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.linkedin %}
                     <tr>
-                        <td>领英网</td>
+                        <td>{{ 'label.connect.linkedin' | trans | raw }}</td>
                         <td>{{ connect.linkedin }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.address %}
                     <tr>
-                        <td>地址</td>
+                        <td>{{ 'label.connect.address' | trans | raw }}</td>
                         <td>{{ connect.address }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.blog %}
                     <tr>
-                        <td>博客</td>
+                        <td>{{ 'label.connect.blog' | trans | raw }}</td>
                         <td>{{ connect.blog }}</td>
-                    </tr>
-                    {% endif %}
-
-                    {% if connect.weibo %}
-                    <tr>
-                        <td>新浪微博</td>
-                        <td>{{ connect.weibo }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.website %}
                     <tr>
-                        <td>网站</td>
+                        <td>{{ 'label.connect.website' | trans | raw }}</td>
                         <td>{{ connect.website }}</td>
                     </tr>
                     {% endif %}
 
                     {% if connect.description %}
                     <tr>
-                        <td>联系方式描述</td>
+                        <td>{{ 'label.connect.description' | trans | raw }}</td>
                         <td>{{ connect.description }}</td>
                     </tr>
                     {% endif %}
@@ -132,8 +128,9 @@
             <div class="row">
 
             <div class="col-md-12">
-                <h3>资料
-                    <small><a href="{{ url('connect_fixed' , {'connect_id' : connect.id}) }}">更新</a></small>
+                <h3>
+                    {{ 'twig.connect.edit.profile' | trans | raw }}
+                    <small><a href="{{ url('connect_fixed' , {'connect_id' : connect.id}) }}">{{ 'twig.update' | trans | raw }}</a></small>
                 </h3>
 
 
@@ -141,49 +138,54 @@
 
                     {% if fixed.gender %}
                     <tr>
-                        <td>性别</td>
-                        <td>{% if fixed.gender == 1 %} 男 {% elseif fixed.gender == 2 %} 女 {% endif %}</td>
+                        <td>{{ 'label.fixed.gender.name' | trans | raw }}</td>
+                        <td>
+                            {% if fixed.gender == 1 %}
+                                {{ 'label.fixed.gender.male' | trans | raw }}
+                            {% elseif fixed.gender == 2 %}
+                                {{ 'label.fixed.gender.female' | trans | raw }}
+                            {% endif %}</td>
                     </tr>
                     {% endif %}
 
                     {% if fixed.age %}
                     <tr>
-                        <td>年龄</td>
+                        <td>{{ 'label.fixed.age' | trans | raw }}</td>
                         <td>{{ fixed.age }}</td>
                     </tr>
                     {% endif %}
 
                     {% if fixed.work %}
                     <tr>
-                        <td>工作/职位</td>
+                        <td>{{ 'label.fixed.work' | trans | raw }}</td>
                         <td>{{ fixed.work }}</td>
                     </tr>
                     {% endif %}
 
                     {% if fixed.education %}
                     <tr>
-                        <td>教育程度</td>
+                        <td>{{ 'label.fixed.education.name' | trans | raw }}</td>
                         <td>{{ fixed.education }}</td>
                     </tr>
                     {% endif %}
 
                     {% if fixed.income %}
                     <tr>
-                        <td>收入</td>
+                        <td>{{ 'label.fixed.income' | trans | raw }}</td>
                         <td>{{ fixed.income }}</td>
                     </tr>
                     {% endif %}
 
                     {% if fixed.value %}
                     <tr>
-                        <td>价值度</td>
+                        <td>{{ 'label.fixed.value.name' | trans | raw }}</td>
                         <td>{{ fixed.value }}</td>
                     </tr>
                     {% endif %}
 
                     {% if fixed.value %}
                     <tr>
-                        <td>客户关系</td>
+                        <td>{{ 'label.fixed.relationship.name' | trans | raw }}</td>
                         <td>{{ fixed.relationship }}</td>
                     </tr>
                     {% endif %}
@@ -201,34 +203,34 @@
 
         <div class="col-md-12">
 
-            <h3>关联的项目</h3>
+            <h3>{{ 'twig.connect.edit.related_projects' | trans | raw }}</h3>
 
             {% for project in  connect.project %}
             <table class="table">
 
                 <tr>
-                    <td>项目名</td>
-                    <td><h4><a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project | raw }}</a></h4></td>
+                    <td width="40%">{{ 'twig.connect.edit.project_name' | trans | raw }}</td>
+                    <td width="60%"><h4><a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project | raw }}</a></h4></td>
                 </tr>
 
                 <tr>
-                    <td>项目金额</td>
+                    <td>{{ 'twig.connect.edit.project_payment' | trans | raw }}</td>
                     <td><i class="fa fa-rmb"></i> {{ project.contactPayment }}</td>
                 </tr>
 
                 <tr>
-                    <td>合同签署日期</td>
-                    <td> {{ project.signAt | date('Y年m月d日') }}</td>
+                    <td>{{ 'twig.connect.edit.project_signed_at' | trans | raw }}</td>
+                    <td> {{ project.signAt | date('Y-m-d') }}</td>
                 </tr>
 
                 <tr>
-                    <td>项目开始日期</td>
-                    <td>{{ project.startAt | date('Y年m月d日') }}</td>
+                    <td>{{ 'twig.connect.edit.project_started_at' | trans | raw }}</td>
+                    <td>{{ project.startAt | date('Y-m-d') }}</td>
                 </tr>
 
                 <tr>
-                    <td>项目结束日期</td>
-                    <td>{{ project.endAt | date('Y年m月d日') }}</td>
+                    <td>{{ 'twig.connect.edit.project_ended_at' | trans | raw }}</td>
+                    <td>{{ project.endAt | date('Y-m-d') }}</td>
                 </tr>
 
             </table>
@@ -236,7 +238,7 @@
 
         </div>
         </div>
-                </div>
+        </div>
 
     </div>
 

@@ -7,17 +7,17 @@
         <div class="col-md-12">
             
             <div class="jumbotron">
-                <h2>创建一个项目</h2>
+                <h2>{{ 'twig.event.create.create_a_project' | trans | raw }}</h2>
             </div>
 
             <div class="page-header">
-                <h1>(2)把事件分配给项目
+                <h1>(2){{ 'twig.event.create.assign_to_project' | trans | raw }}
 
                     <small>
                         {% if event.project %}
                             已经分配到项目 {{ event.project }}
                         {% else %}
-                            找到对应的项目或者创建新项目
+                            {{ 'twig.event.create.assign_to_project_description' | trans | raw }}
                         {% endif %}
                     </small>
 
@@ -25,8 +25,8 @@
             </div>
 
 
-                <h3>事件名: {{ event.subject }}</h3>
-                <p>事件内容: {{ event.content }}</p>
+                <h3>{{ 'twig.event.create.event_subject' | trans | raw }}: {{ event.subject }}</h3>
+                <h3>{{ 'twig.event.create.event_content' | trans | raw }}: {{ event.content }}</h3>
 
         </div>
 
@@ -36,7 +36,7 @@
 
         <div class="col-md-6">
             <div class="page-header">
-                <h2>分配给现有的项目</h2>
+                <h2>{{ 'twig.event.create.to_current' | trans | raw }}</h2>
             </div>
             {{ form(select_form) }}
 
@@ -45,7 +45,7 @@
 
         <div class="col-md-6">
             <div class="page-header">
-                <h2>分配给新的项目</h2>
+                <h2>{{ 'twig.event.create.to_new' | trans | raw }}</h2>
             </div>
             {{ form(form) }}
 

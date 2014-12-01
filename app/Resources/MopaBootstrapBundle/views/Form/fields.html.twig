@@ -43,6 +43,19 @@
     {{ parent() }}
 {% endblock choice_widget_collapsed %}
 
+{% block choice_widget_options -%}
+    {% for group_label, choice in options %}
+        {%- if choice is iterable -%}
+            <optgroup label="{{ group_label|trans({}, translation_domain) }}">
+                {% set options = choice %}
+                {{- block('choice_widget_options') -}}
+            </optgroup>
+        {%- else -%}
+            <option value="{{ choice.value | trans({}, translation_domain)  }}"{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice.label|trans({}, translation_domain) | raw }}</option>
+        {%- endif -%}
+    {% endfor %}
+{%- endblock choice_widget_options %}
+
 {% block textarea_widget %}
     {% set type = type|default('text') %}
     {% if type != 'hidden' and ( widget_addon_prepend|default(null) is not null or widget_addon_append|default(null) is not null ) %}

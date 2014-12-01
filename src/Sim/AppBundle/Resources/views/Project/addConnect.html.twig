@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="jumbotron">
-        <h2>添加一个新的联系方式到项目</h2>
+        <h2>{{ 'twig.project.add.add_connect_to' | trans | raw }}</h2>
     </div>
 
     <div class="container">
@@ -15,7 +15,7 @@
             <div class="col-md-6">
 
                 <div class="page-header">
-                    <h3>创建新的联系人</h3>
+                    <h3>{{ 'twig.project.add.create_new_contacts' | trans | raw }}</h3>
                 </div>
                 {{ form(form) }}
 
@@ -23,7 +23,7 @@
 
             <div class="col-md-6">
                 <div class="page-header">
-                    <h3>从现有联系人中添加</h3>
+                    <h3>{{ 'twig.project.add.select_from' | trans | raw }}</h3>
                 </div>
                 {{ form(select_form) }}
 

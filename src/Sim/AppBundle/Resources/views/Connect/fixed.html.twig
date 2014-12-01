@@ -6,47 +6,54 @@
 {% block body %}
     <div class="row">
         <div class="col-md-12">
-
             <div class="page-header">
-                <h2>通讯录 <small>{{ connect.name }}</small></h2>
+                <h2>{{ 'twig.connect.fixed.connect_list' | trans | raw }} <small>{{ connect.name }}</small></h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 high_light_disable">
+            <div class="page-header">
+            <h3>
+                {{ 'twig.connect.fixed.update_fixed_profile' | trans | raw }}
+                <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">{{ 'twig.return' | trans | raw }}</a></small>
+            </h3>
             </div>
 
-            <div class="col-md-6">
-                <h3>更新联系人固定属性
-                    <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">返回</a></small>
-                </h3>
-                <hr/>
-
-                {{ form(form) }}
-
-
-            </div>
-
-            <div class="col-md-6">
-                <h3>
-                    更新联系人自定义属性
-                    <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">返回</a></small>
-                </h3>
-                <hr/>
-                <div {% if high_light %}class="high_light"{% else %}class="high_light_disable"{% endif %}>
-                {{ form(f_form) }}
-                <br/>
-                <table class="table">
-                {% for fluent in fixed.fluent %}
-                    <tr>
-                        <td><strong>{{ fluent.subject }}</strong></td>
-                        <td>{{ fluent.value }}</td>
-                        <td>
-                            <a href="{{ url('connect_fixed' , {'connect_id': connect.id , 'fluent_id': fluent.id}) }}">编辑</a>
-                            <a href="{{ url('drop_fluent' , {'fluent_id': fluent.id}) }}">删除</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </table>
-
-            </div>
+            {{ form(form) }}
 
         </div>
+
+        <div class="col-md-6 {% if high_light %}high_light{% else %}high_light_disable{% endif %}">
+            <div class="page-header">
+                <h3>
+                    {{ 'twig.connect.fixed.update_user_defined_profile' | trans | raw }}
+                    <small><a href="{{ url('connect_edit' , {'connect_id' : connect.id}) }}">{{ 'twig.return' | trans | raw }}</a></small>
+                </h3>
+            </div>
+
+            {{ form(f_form) }}
+            <br/>
+            <table class="table">
+                <tr>
+                    <td>{{ 'twig.key' | trans | raw }}</td>
+                    <td>{{ 'twig.value' | trans | raw }}</td>
+                    <td>{{ 'twig.action' | trans | raw }}</td>
+                </tr>
+            {% for fluent in fixed.fluent %}
+                <tr>
+                    <td><strong>{{ fluent.subject }}</strong></td>
+                    <td>{{ fluent.value }}</td>
+                    <td>
+                        <a href="{{ url('connect_fixed' , {'connect_id': connect.id , 'fluent_id': fluent.id}) }}">编辑</a>
+                        <a href="{{ url('drop_fluent' , {'fluent_id': fluent.id}) }}">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+
+        </div>
+
+    </div>
 
 
     </div>

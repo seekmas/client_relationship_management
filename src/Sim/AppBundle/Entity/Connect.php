@@ -593,7 +593,7 @@ class Connect
      */
     public function addDateFilter()
     {
-        $this->dateFilter = $this->getCreatedAt()->format('Y年m月');
+        $this->dateFilter = $this->getCreatedAt()->format('Y-m');
     }
 
     public function __toString()

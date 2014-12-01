@@ -23,11 +23,8 @@ class FiltersExtension extends \Twig_Extension
     public function loggable($entity)
     {
         $em = $this->container->get('doctrine')->getManager();
-
         $repo = $em->getRepository('Gedmo\Loggable\Entity\LogEntry');
-
         $logs = $repo->getLogEntries($entity);
-
         return $logs;
     }
 

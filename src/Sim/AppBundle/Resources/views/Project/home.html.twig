@@ -4,13 +4,12 @@
 
 {% block body %}
     <div class="page-header">
-        <h2>项目</h2>
+        <h2><i class="fa fa-list"></i> {{ 'twig.project.home.subject' | trans | raw }}</h2>
     </div>
 
     <div class="row">
 
-        <div class="col-md-8">
-
+        <div class="col-md-12">
             <ul>
             {% set filter = "" %}
             {% set ul_flag = 0 %}
@@ -18,17 +17,29 @@
 
             {% for project in projects %}
 
-
                 {% if project.dateFilter != filter %}
-
                     <div class="page-header">
                         <h2>{{ project.dateFilter }}</h2>
                     </div>
-
                 {% endif %}
 
 
-                <li><h4>{{ project.createdAt | date('Y-m-d') }} <a href="{{ url('edit_project' , {'project_id' : project.id}) }}">{{ project | raw }}</a></h4></li>
+                <li>
+                    <h4>
+                        {{ project.createdAt | date('Y-m-d') }}
+
+                        {% if project.client %}
+                            <i class="fa fa-check-square-o"></i>
+
+                            <small><a href="{{ url('edit_client' , {'client_id' : project.client.id}) }}">{{ project.client }} </a></small> :
+                        {% else %}
+                            <i class="fa fa-square-o"></i>
+                        {% endif %}
+                        <a href="{{ url('edit_project' , {'project_id' : project.id}) }}">
+                            {{ project | raw }}
+                        </a>
+                    </h4>
+                </li>
 
                 {% set filter = project.dateFilter %}
 

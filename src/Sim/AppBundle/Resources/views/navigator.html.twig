@@ -14,11 +14,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">首页</a></li>
-                <li><a href="{{ url('builder_home') }}">创建</a></li>
-                <li><a href="{{ url('connect_home') }}">通讯录</a></li>
-                <li><a href="{{ url('client_home') }}">客户</a></li>
-                <li><a href="{{ url('project_home') }}">项目</a></li>
+                <li><a id="home" href="/">{{ 'nav.home' | trans | raw }}</a></li>
+                <li><a id="create" href="{{ url('builder_home') }}">{{ 'nav.create' | trans | raw }}</a></li>
+                <li><a id="connect" href="{{ url('connect_home') }}">{{ 'nav.contacts' | trans | raw }}</a></li>
+                <li><a id="client" href="{{ url('client_home') }}">{{ 'nav.client' | trans | raw }}</a></li>
+                <li><a id="project" href="{{ url('project_home') }}">{{ 'nav.project' | trans | raw }}</a></li>
             </ul>
 
         </div>

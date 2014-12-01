@@ -13,6 +13,9 @@
     <link href="{{ asset('simapp/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('datetime-picker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('notify/pnotify.custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bootstrap-tour/build/css/bootstrap-tour-standalone.min.css') }}" rel="stylesheet">
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
@@ -53,6 +56,8 @@
 <script src="{{ asset('jquery.js') }}"></script>
 <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('notify/pnotify.custom.min.js') }}"></script>
+
+<script src="{{ asset('bootstrap-tour/build/js/bootstrap-tour-standalone.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('datetime-picker/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{ asset('datetime-picker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}" charset="UTF-8"></script>
@@ -97,7 +102,48 @@
     });
 
 
+    // Instance the tour
+    var tour = new Tour({
+            name: "tour",
+            steps: [
 
+            ],
+            container: "body",
+            keyboard: true,
+            storage: false , //window.localStorage,
+            debug: false,
+            backdrop: true,
+            backdropPadding: 0,
+            redirect: true,
+            orphan: false,
+            duration: false,
+            delay: false,
+            basePath: "",
+            template: "<div class='popover tour'><div class='arrow'></div> <h3 class='popover-title'></h3><div class='popover-content'></div> <div class='popover-navigation'><div class='btn-group'><button class='btn btn-sm btn-default disabled' data-role='prev'>« Prev</button><button class='btn btn-sm btn-default' data-role='next'>Next »</button></div><button class='btn btn-sm btn-default' data-role='end'>End tour</button></div>"
+    });
+
+    tour.addStep({
+        path: "",
+        element: ".high_light",
+        placement: "bottom",
+        title: false ,//"Start from crm home page",
+        content: false , //"Here is the home page of the crm , we put all history to here , as you see , everyone and every operations are list on here",
+        next: 0,
+        prev: 0,
+        animation: true,
+        container: "body",
+        backdrop: true,
+        backdropPadding: false,
+        reflex: false,
+        orphan: false,
+        template: false
+    });
+
+    // Initialize the tour
+    tour.init();
+
+    // Start the tour
+    tour.start();
 
 </script>
 

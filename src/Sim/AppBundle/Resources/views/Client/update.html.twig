@@ -10,23 +10,24 @@
 
         <div class="col-md-6">
             <div class="page-header">
-                <h3>更新固定客户资料
-                    <small><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">返回</a></small>
+                <h3>
+                    {{ 'twig.client.update.fixed_profile' | trans | raw }}
+                    <small><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">{{ 'twig.return' | trans | raw }}</a></small>
                 </h3>
             </div>
             {{ form(form) }}
 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 {% if high_light %}high_light{% else %}high_light_disable{% endif %}">
             <div class="page-header">
             <h3>
-                更新自定义客户资料
-                <small><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">返回</a></small>
+                {{ 'twig.client.update.user_defined_profile' | trans | raw }}
+                <small><a href="{{ url('edit_client' , {'client_id' : client.id}) }}">{{ 'twig.return' | trans | raw }}</a></small>
             </h3>
             </div>
 
-            <div {% if high_light %}class="high_light"{% else %}class="high_light_disable"{% endif %}>
+            <div>
                 {{ form(fluent_form) }}
             </div>
 
@@ -34,9 +35,9 @@
 
             <table class="table">
                 <tr>
-                    <td>属性</td>
-                    <td>值</td>
-                    <td>操作</td>
+                    <td>{{ 'twig.key' | trans | raw }}</td>
+                    <td>{{ 'twig.value' | trans | raw }}</td>
+                    <td>{{ 'twig.action' | trans | raw }}</td>
                 </tr>
                 {% for fluent in client.fluent %}
                 <tr>

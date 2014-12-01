@@ -8,13 +8,13 @@
                 <div class="col-md-6">
 
                     <div class="page-header">
-                        <h1>操作日志</h1>
+                        <h1>{{ 'twig.home.log' | trans | raw }}</h1>
                     </div>
 
                     {% for log in logs %}
 
                             <div class="log_info">
-
+                                {{ log.id }}
                                 <span class="log_icon">
                                 {% if log.action == 'create' %}
                                     <span class="fa-stack fa-lg">
@@ -35,7 +35,7 @@
                                 </span>
 
                                 <a href="#">{{ log.username }}</a>
-                                {{ log.action | translate }} 了 <a href="">{{ log.objectClass | translate }}</a> 的信息:
+                                {{ log.action | translate }} {{ log.objectClass | translate }} :
 
                                 <strong>{{ log | log_to_entity | raw }}</strong>
 

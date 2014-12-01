@@ -8,12 +8,23 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class FixedType extends AbstractType
 {
+    private $container;
+
+    public function __construct($container)
+    {
+        $this->container = $container;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $translator = $this->container->get('translator');
+
+
+
         $builder
             ->add('gender' , 'choice' , [
                 'label' => 'label.fixed.gender.name' ,
@@ -26,15 +37,15 @@ class FixedType extends AbstractType
                 'label' => 'label.fixed.education.name',
                 'choices'   =>
                     [
-                        'label.fixed.education.unknown' => 'label.fixed.education.unknown',
-                        'label.fixed.education.uneducated' => 'label.fixed.education.uneducated',
-                        'label.fixed.education.preschool' => 'label.fixed.education.preschool',
-                        'label.fixed.education.primary_school' => 'label.fixed.education.primary_school',
-                        'label.fixed.education.junior_senior' => 'label.fixed.education.junior_senior',
-                        'label.fixed.education.college' => 'label.fixed.education.college',
-                        'label.fixed.education.university' => 'label.fixed.education.university',
-                        'label.fixed.education.master' => 'label.fixed.education.master' ,
-                        'label.fixed.education.phd' => 'label.fixed.education.phd' ,
+                        $translator->trans('label.fixed.education.unknown') => 'label.fixed.education.unknown',
+                        $translator->trans('label.fixed.education.uneducated') => 'label.fixed.education.uneducated',
+                        $translator->trans('label.fixed.education.preschool') => 'label.fixed.education.preschool',
+                        $translator->trans('label.fixed.education.primary_school') => 'label.fixed.education.primary_school',
+                        $translator->trans('label.fixed.education.junior_senior') => 'label.fixed.education.junior_senior',
+                        $translator->trans('label.fixed.education.college') => 'label.fixed.education.college',
+                        $translator->trans('label.fixed.education.university') => 'label.fixed.education.university',
+                        $translator->trans('label.fixed.education.master') => 'label.fixed.education.master' ,
+                        $translator->trans('label.fixed.education.phd') => 'label.fixed.education.phd' ,
                     ],
                 'required'  => false,
             ])
@@ -44,11 +55,11 @@ class FixedType extends AbstractType
                     'label' => 'label.fixed.value.name',
                     'choices'   =>
                         [
-                            'label.fixed.value.general' => 'label.fixed.value.general',
-                            'label.fixed.value.potential' => 'label.fixed.value.potential' ,
-                            'label.fixed.value.important' => 'label.fixed.value.important' ,
-                            'label.fixed.value.vip' => 'label.fixed.value.vip' ,
-                            'label.fixed.value.long_term' => 'label.fixed.value.long_term' ,
+                            $translator->trans('label.fixed.value.general') => 'label.fixed.value.general',
+                            $translator->trans('label.fixed.value.potential') => 'label.fixed.value.potential' ,
+                            $translator->trans('label.fixed.value.important') => 'label.fixed.value.important' ,
+                            $translator->trans('label.fixed.value.vip') => 'label.fixed.value.vip' ,
+                            $translator->trans('label.fixed.value.long_term') => 'label.fixed.value.long_term' ,
                         ],
                     'required'  => false,
                 ])
@@ -57,12 +68,12 @@ class FixedType extends AbstractType
                     'label' => 'label.fixed.relationship.name',
                     'choices'   =>
                         [
-                            'label.fixed.relationship.empty' => 'label.fixed.relationship.empty' ,
-                            'label.fixed.relationship.requirement_not_clear' => 'label.fixed.relationship.requirement_not_clear' ,
-                            'label.fixed.relationship.requirement_clear' => 'label.fixed.relationship.requirement_clear' ,
-                            'label.fixed.relationship.in_cooperation' => 'label.fixed.relationship.in_cooperation' ,
-                            'label.fixed.relationship.terminate' => 'label.fixed.relationship.terminate' ,
-                            'label.fixed.relationship.finish' => 'label.fixed.relationship.finish' ,
+                            $translator->trans('label.fixed.relationship.empty') => 'label.fixed.relationship.empty' ,
+                            $translator->trans('label.fixed.relationship.requirement_not_clear') => 'label.fixed.relationship.requirement_not_clear' ,
+                            $translator->trans('label.fixed.relationship.requirement_clear') => 'label.fixed.relationship.requirement_clear' ,
+                            $translator->trans('label.fixed.relationship.in_cooperation') => 'label.fixed.relationship.in_cooperation' ,
+                            $translator->trans('label.fixed.relationship.terminate') => 'label.fixed.relationship.terminate' ,
+                            $translator->trans('label.fixed.relationship.finish') => 'label.fixed.relationship.finish' ,
                         ],
                     'required'  => false,
                 ])

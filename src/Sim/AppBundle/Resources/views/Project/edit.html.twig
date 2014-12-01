@@ -7,13 +7,19 @@
     <div class="container">
 
         <div class="jumbotron">
-            <h2>项目: {{ project | raw }}</h2>
+            <h2>{{ 'twig.project.edit.project' | trans | raw }}: {{ project | raw }}</h2>
         </div>
 
         <div class="col-md-6">
 
             <div class="page-header">
-                <h2>项目事件(进度) <small><a href="{{ url('event_created_from_project' , {'project_id' : project.id}) }}">添加新的事件</a></small></h2>
+                <h2>{{ 'twig.project.edit.event' | trans | raw }}({{ 'twig.project.edit.progress' | trans | raw }})
+                    <small>
+                        <a href="{{ url('event_created_from_project' , {'project_id' : project.id}) }}">
+                            {{ 'twig.project.edit.new_event' | trans | raw }}
+                        </a>
+                    </small>
+                </h2>
             </div>
 
             <ul>
@@ -30,51 +36,62 @@
         <div class="col-md-6">
             <div class="row">
 
-                <div class="col-md-12">
+                <div class="col-md-12 {% if project.client == false %}high_light{% endif %}">
                     <div class="page-header">
-                        <h2>客户信息</h2>
+                        <h2>{{ 'twig.project.edit.client' | trans | raw }}</h2>
                     </div>
 
                     {% if project.client %}
                         <p>
-                            项目所属的客户:
+                            {{ 'twig.project.edit.belong_to' | trans | raw }}:
                             <strong><a href="{{ url('edit_client' , {'client_id' : project.client.id}) }}">{{ project.client }}</a></strong>
                         </p>
-
                     {% else %}
-                        <div class="row high_light">
+                        <div class="row">
                             <div class="col-md-8">
-                            选择一个客户
+                            {{ 'twig.project.edit.select' | trans | raw }}
                             {{ form(form) }}
                             </div>
 
                             <div class="col-md-4">
-                            或者<strong>创建一个客户</strong>
-                                <p><a class="btn btn-default" href="{{ url('create_client', {'project_id' : project.id}) }}">创建一个客户</a></p>
+                            {{ 'twig.project.edit.or' | trans | raw }}
+                                <strong>{{ 'twig.project.edit.create' | trans | raw }}</strong>
+                                <p>
+                                    <a class="btn btn-default" href="{{ url('create_client', {'project_id' : project.id}) }}">
+                                        {{ 'twig.project.edit.create_new_client' | trans | raw }}
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     {% endif %}
                 </div>
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>项目信息 <small><a href="{{ url('update_project_basic_info' , {'project_id' : project.id}) }}">更新信息</a></small></h2>
+                        <h2>
+                            {{ 'twig.project.edit.project_information' | trans | raw }}
+                            <small>
+                                <a href="{{ url('update_project_basic_info' , {'project_id' : project.id}) }}">
+                                    {{ 'twig.update' | trans | raw }}
+                                </a>
+                            </small>
+                        </h2>
                     </div>
 
                     <dl class="dl-horizontal">
-                        <dt>项目名</dt>
+                        <dt>{{ 'label.project.projectName' | trans | raw }}</dt>
                         <dd><h4>{{ project | raw }}</h4></dd>
 
-                        <dt>项目金额</dt>
+                        <dt>{{ 'label.project.contactPayment' | trans | raw }}</dt>
                         <dd><i class="fa fa-rmb"></i> {{ project.contactPayment }}</dd>
 
-                        <dt>合同签署日期</dt>
-                        <dd>{% if project.signAt %}{{ project.signAt | date('Y年m月d日') }}{% endif %}</dd>
+                        <dt>{{ 'label.project.signAt' | trans | raw }}</dt>
+                        <dd>{% if project.signAt %}{{ project.signAt | date('Y-m-d') }}{% endif %}</dd>
 
-                        <dt>项目开始</dt>
-                        <dd>{% if project.startAt %}{{ project.startAt | date('Y年m月d日') }}{% endif %}</dd>
+                        <dt>{{ 'label.project.startAt' | trans | raw }}</dt>
+                        <dd>{% if project.startAt %}{{ project.startAt | date('Y-m-d') }}{% endif %}</dd>
 
-                        <dt>项目结束</dt>
-                        <dd>{% if project.endAt %}{{ project.endAt | date('Y年m月d日') }}{% endif %}</dd>
+                        <dt>{{ 'label.project.endAt' | trans | raw }}</dt>
+                        <dd>{% if project.endAt %}{{ project.endAt | date('Y-m-d') }}{% endif %}</dd>
 
                         {% for fluent in project.fluent %}
                         <dt>{{ fluent.subject }}</dt>
@@ -88,7 +105,13 @@
 
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>项目联系(负责人/联系方式) <small><a href="{{ url('update_project_connect_info' , {'project_id' : project.id}) }}">添加联系方式</a></small></h2>
+                        <h2>{{ 'twig.project.edit.contacts_of_project' | trans | raw }}
+                            <small>
+                                <a href="{{ url('update_project_connect_info' , {'project_id' : project.id}) }}">
+                                    {{ 'twig.add' | trans | raw }}
+                                </a>
+                            </small>
+                        </h2>
                     </div>
 
                     <ul>

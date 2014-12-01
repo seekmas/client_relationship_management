@@ -16,7 +16,7 @@ class SelectProjectType extends AbstractType
         $builder
             ->add('project' , 'entity' ,
                 [
-                    'label' => 'label.selectConnect.list_of_projects'
+                    'label' => 'label.selectProject.list_of_projects' ,
                     'class' => 'SimAppBundle:Project'
                 ]
             )

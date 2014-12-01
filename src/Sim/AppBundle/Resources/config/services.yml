@@ -1,5 +1,5 @@
 services:
-
+    ##########
     page:
         class: Sim\AppBundle\Paginator\Paginator
         arguments: [@knp_paginator , @service_container]
@@ -15,7 +15,7 @@ services:
         arguments: [@service_container]
         tags:
            - { name: twig.extension }
-
+    ##########
     event:
         class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: doctrine
@@ -54,3 +54,7 @@ services:
 
     string_utils:
         class: Sim\AppBundle\Utils\StringUtils
+    ##########
+    fixed_type:
+        class: Sim\AppBundle\Form\FixedType
+        arguments: [@service_container]

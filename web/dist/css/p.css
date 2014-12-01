@@ -22,7 +22,7 @@
 }
 
 .high_light {
-    border: 5px solid #00CC99;
+    #border: 5px solid #00CC99;
     padding: 20px;
     border-radius: 10px;
 }

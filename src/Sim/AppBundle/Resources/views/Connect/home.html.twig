@@ -8,7 +8,7 @@
         <div class="col-md-12">
 
             <div class="page-header">
-                <h2>通讯录</h2>
+                <h2>{{ 'twig.connect.home.connect_list' | trans | raw }}</h2>
             </div>
 
             <ul>
@@ -17,17 +17,12 @@
 
                     <li>
 
-                        <a href="{{ url('connect_edit' , {'connect_id':connect.id}) }}">
-                        {{ connect.name }}
-                        (
+                       <a href="{{ url('connect_edit' , {'connect_id':connect.id}) }}">
+                           <strong>{{ connect.name }}</strong>
+                       </a>
 
-                            {% if connect.email %}Email: {{ connect.email }}{% endif %}
-
-                        {% if connect.description %}备注: {{ connect.description }}{% endif %}
-
-                        )
-                        </a>
-
+                            {% if connect.email %}[ {{ 'twig.connect.home.email' | trans | raw }}: {{ connect.email }} ]{% endif %}
+                            {% if connect.description %}[ {{ 'twig.connect.home.description' | trans | raw }}: {{ connect.description }} ]{% endif %}
                     </li>
 
                 {% endfor %}

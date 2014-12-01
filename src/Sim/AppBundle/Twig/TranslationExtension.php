@@ -25,16 +25,18 @@ class TranslationExtension extends \Twig_Extension
 
     public function translate($key)
     {
+        $translator = $this->get('translator');
+
         $list = [
-            'create' => '创建' ,
-            'update' => '更新' ,
-            'remove' => '删除' ,
-            'Sim\AppBundle\Entity\Connect'  => '联系人' ,
-            'Sim\AppBundle\Entity\Event'    => '事件' ,
-            'Sim\AppBundle\Entity\Project'  => '项目' ,
-            'Sim\AppBundle\Entity\Client'   => '客户' ,
-            'Sim\AppBundle\Entity\Fixed'    => '固定资料' ,
-            'Sim\AppBundle\Entity\Fluent'   => '自定义资料' ,
+            'create' => $translator->trans('extension.translation.create') ,
+            'update' => $translator->trans('extension.translation.update') ,
+            'remove' => $translator->trans('extension.translation.remove') ,
+            'Sim\AppBundle\Entity\Connect'  => $translator->trans('extension.translation.contacts') ,
+            'Sim\AppBundle\Entity\Event'    => $translator->trans('extension.translation.event') ,
+            'Sim\AppBundle\Entity\Project'  => $translator->trans('extension.translation.project') ,
+            'Sim\AppBundle\Entity\Client'   => $translator->trans('extension.translation.client') ,
+            'Sim\AppBundle\Entity\Fixed'    => $translator->trans('extension.translation.fixed_profile') ,
+            'Sim\AppBundle\Entity\Fluent'   => $translator->trans('extension.translation.user_defined_profile') ,
         ];
 
         return $list[$key];
@@ -65,16 +67,85 @@ class TranslationExtension extends \Twig_Extension
             $filters->disable('softdeleteable');
         }
 
-
-
         $repo = $em->getRepository($object->getObjectClass());
         $entity = $repo->find($object->getObjectId());
+
+        if('create' == $object->getAction())
+        {
+            return '<a href="'.$this->map($object,$entity).'">'.$entity.'</a>';
+
+        }elseif ('update' == $object->getAction())
+        {
+            return '<a href="'.$this->map($object,$entity).'">'.$entity.'</a>';
+
+        }else if('remove' == $object->getAction())
+        {
+
+        }
+
+
         return $entity;
     }
 
     public function get($service)
     {
         return $this->container->get($service);
+    }
+
+    protected function map($object,$entity)
+    {
+        $class = $object->getObjectClass();
+        $router = $this->container->get('router');
+
+        if('Sim\AppBundle\Entity\Fluent' === $class)
+        {
+            if($entity->getProject())
+            {
+                return $router->generate('update_project_basic_info',
+                    [
+                        'project_id' => $entity->getProject()->getId() ,
+                        'fluent_id'  => $entity->getId() ,
+                    ]
+                );
+            }
+            elseif($entity->getFixed())
+            {
+                return $router->generate('connect_fixed',
+                    [
+                        'connect_id' => $entity->getFixed()->getConnect()->getId() ,
+                        'fluent_id'  => $entity->getId() ,
+                    ]);
+            }elseif($entity->getClient())
+            {
+                return $router->generate('update_client',
+                    [
+                        'client_id' => $entity->getClient()->getId() ,
+                        'fluent_id' => $entity->getId()
+
+                    ]
+                );
+
+            }
+        }elseif('Sim\AppBundle\Entity\Fixed' === $class)
+        {
+
+
+
+        }elseif('Sim\AppBundle\Entity\Event' === $class)
+        {
+            return $router->generate('edit_project', ['project_id' => $entity->getProject()->getId()]);
+
+        }elseif('Sim\AppBundle\Entity\Connect' === $class)
+        {
+            return $router->generate('connect_edit', ['connect_id' => $object->getObjectId()]);
+
+        }elseif('Sim\AppBundle\Entity\Client' === $class)
+        {
+
+        }elseif('Sim\AppBundle\Entity\Project' === $class)
+        {
+            return $router->generate('edit_project', ['project_id' => $object->getObjectId()]);
+        }
     }
 
     public function getName()

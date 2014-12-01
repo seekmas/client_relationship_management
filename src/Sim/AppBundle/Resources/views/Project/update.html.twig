@@ -7,45 +7,50 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron">
-                    <h2>项目: {{ project | raw }}</h2>
+                    <h2>{{ 'twig.project.update.project' | trans | raw }}: {{ project | raw }}</h2>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 high_light_disable">
                 <div class="page-header">
-                    <h3>更新固定项目属性
-                        <small><a href="{{ url('edit_project' , {'project_id': project.id}) }}">返回</a></small>
+                    <h3>
+                        {{ 'twig.project.update.update_fixed' | trans | raw }}
+                        <small><a href="{{ url('edit_project' , {'project_id': project.id}) }}">{{ 'twig.return' | trans | raw }}</a></small>
                     </h3>
                 </div>
                 {{ form(form) }}
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 {% if high_light %}high_light{% else %}high_light_disable{% endif %}">
                 <div class="page-header">
                     <h3>
-                        更新自定义项目属性
-                        <small><a href="{{ url('edit_project' , {'project_id': project.id}) }}">返回</a></small>
+                        {{ 'twig.project.update.update_user_defined' | trans | raw }}
+                        <small><a href="{{ url('edit_project' , {'project_id': project.id}) }}">{{ 'twig.return' | trans | raw }}</a></small>
                     </h3>
                 </div>
 
-                <div {% if high_light %}class="high_light"{% else %}class="high_light_disable"{% endif %}>
+                <div >
                 {{ form(fluent_form) }}
                 <hr>
 
                 <table class="table">
                     <tbody><tr>
-                        <td>属性</td>
-                        <td>值</td>
-                        <td>操作</td>
+                        <td>{{ 'twig.key' | trans | raw }}</td>
+                        <td>{{ 'twig.value' | trans | raw }}</td>
+                        <td>{{ 'twig.action' | trans | raw }}</td>
                     </tr>
                     {% for fluent in project.fluent %}
                     <tr>
                         <td>{{ fluent.subject }}</td>
                         <td><strong>{{ fluent.value }}</strong></td>
                         <td>
-                            <a href="{{ url('update_project_basic_info' , {'project_id': project.id , 'fluent_id': fluent.id}) }}">编辑</a>
-                            <a href="{{ url('drop_fluent' , {'fluent_id': fluent.id}) }}">删除</a>
+                            <a href="{{ url('update_project_basic_info' , {'project_id': project.id , 'fluent_id': fluent.id}) }}">
+                                {{ 'twig.edit' | trans | raw }}
+                            </a>
+                            <a href="{{ url('drop_fluent' , {'fluent_id': fluent.id}) }}">
+                                {{ 'twig.remove' | trans | raw }}
+                            </a>
                         </td>
                     </tr>
                     {% endfor %}
