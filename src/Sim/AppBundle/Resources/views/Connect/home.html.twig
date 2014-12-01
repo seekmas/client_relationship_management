@@ -11,22 +11,28 @@
                 <h2>{{ 'twig.connect.home.connect_list' | trans | raw }}</h2>
             </div>
 
-            <ul>
+            {% set initial = '' %}
 
+            <ul>
                 {% for connect in connects %}
 
-                    <li>
+                    {% if initial != connect.initial %}
+                        {% set initial = connect.initial %}
+                    <li style="list-style-type: none"><h3>{{ connect.initial }}</h3></li>
+                    {% endif %}
 
-                       <a href="{{ url('connect_edit' , {'connect_id':connect.id}) }}">
-                           <strong>{{ connect.name }}</strong>
-                       </a>
-
-                            {% if connect.email %}[ {{ 'twig.connect.home.email' | trans | raw }}: {{ connect.email }} ]{% endif %}
-                            {% if connect.description %}[ {{ 'twig.connect.home.description' | trans | raw }}: {{ connect.description }} ]{% endif %}
-                    </li>
+                <li>
+                   <a href="{{ url('connect_edit' , {'connect_id':connect.id}) }}">
+                       <strong>{{ connect.name }}</strong>
+                   </a>
+                {% if connect.email %}[ {{ 'twig.connect.home.email' | trans | raw }}: {{ connect.email }} ]{% endif %}
+                {% if connect.description %}[ {{ 'twig.connect.home.description' | trans | raw }}: {{ connect.description }} ]{% endif %}
+                </li>
 
                 {% endfor %}
             </ul>
+
+            {{ knp_pagination_render(connects) }}
 
         </div>
 

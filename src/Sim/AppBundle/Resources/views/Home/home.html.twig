@@ -48,6 +48,48 @@
                     {{ knp_pagination_render(logs) }}
                 </div>
 
+                <div class="col-md-6">
+
+                    <div class="panel panel-default bootcards-summary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Search on crm</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-3">
+                                    <a class="bootcards-summary-item" href="{{ url('search_contacts') }}">
+                                        <i class="fa fa-3x fa-users"></i>
+                                        <h4>Contacts</h4>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <a class="bootcards-summary-item" href="{{ url('search_clients') }}">
+                                        <i class="fa fa-3x fa-building-o"></i>
+                                        <h4>Clients</h4>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <a class="bootcards-summary-item" href="{{ url('search_events') }}">
+                                        <i class="fa fa-3x fa-clipboard"></i>
+                                        <h4>Events</h4>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <a class="bootcards-summary-item" href="{{ url('search_projects') }}">
+                                        <i class="fa fa-3x fa-files-o"></i>
+                                        <h4>Projects</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <small>Select a type to search</small>
+                        </div>
+                    </div>
+
+
+
+                </div>
             </div>
         </div>
 

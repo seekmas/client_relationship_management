@@ -20,10 +20,12 @@ class ConnectController extends Controller
     public function homeAction()
     {
 
-        $connects = $this->get('connect')->findAll();
+        $connects = $this->get('connect');
+
+        $paginator = $this->get('page')->get($connects , [] , ['initial' => 'desc'] , 500);
 
         return [
-            'connects' => $connects
+            'connects' => $paginator
         ];
     }
 

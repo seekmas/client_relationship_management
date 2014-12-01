@@ -1,0 +1,29 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form(form) }}
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Search Results ( {{ list | length }} )</div>
+                <div class="list-group">
+                    {% for event in list %}
+                        <a class="list-group-item" href="{% if event.project %}
+                        {{ url('edit_project' , {'project_id': event.project.id}) }}
+                        {% endif %}
+                        ">
+                            <h4 class="list-group-item-heading">{{ event.subject }}</h4>
+                            <p class="list-group-item-text">{{ event.content }}</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

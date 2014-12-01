@@ -52,10 +52,12 @@ label:
         contactPayment: Fund of project
         description: Description
         save: Create / Update
+        search: Search
     client:
         name: Client's name ( company name )
         description: Client's description( such as: business records , industry etc. )
         save: Create / Update
+        search: Search
     connect:
         name: Name
         email: Email
@@ -72,10 +74,12 @@ label:
         website: Website
         description: Description
         save: Create / Update
+        search: Search
     event:
         subject: Event subject
         content: Event content
         save: Create
+        search: Search
     fixed:
         gender:
             name: gender
@@ -204,6 +208,7 @@ twig:
             update_user_defined: Update user-defined information
 
 nav:
+    band: Makoto CRM
     home: Home
     create: Create
     contacts: Contacts

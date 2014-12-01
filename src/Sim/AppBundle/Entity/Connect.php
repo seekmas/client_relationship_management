@@ -150,6 +150,11 @@ class Connect
     private $dateFilter;
 
     /**
+     * @ORM\Column(name="initial" , type="string" , length=1 , nullable=true)
+     */
+    private $initial;
+
+    /**
      * @ORM\OneToOne(targetEntity="Fixed" , mappedBy="connect")
      */
     private $fixed;
@@ -567,6 +572,24 @@ class Connect
     public function setDateFilter($dateFilter)
     {
         $this->dateFilter = $dateFilter;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInitial()
+    {
+        return $this->initial;
+    }
+
+    /**
+     * @return Connect
+     * @param mixed $initial
+     */
+    public function setInitial($initial)
+    {
+        $this->initial = $initial;
         return $this;
     }
 

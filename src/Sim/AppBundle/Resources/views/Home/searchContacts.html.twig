@@ -1,0 +1,26 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6">
+        {{ form(form) }}
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Search Results ( {{ list | length }} )</div>
+                <div class="list-group">
+                    {% for connect in list %}
+                    <a class="list-group-item" href="{{ url('connect_edit' , {'connect_id': connect.id}) }}">
+                        <h4 class="list-group-item-heading">{{ connect }}</h4>
+                        <p class="list-group-item-text">{{ connect.email }}</p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

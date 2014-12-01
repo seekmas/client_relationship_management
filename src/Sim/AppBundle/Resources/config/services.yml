@@ -58,3 +58,16 @@ services:
     fixed_type:
         class: Sim\AppBundle\Form\FixedType
         arguments: [@service_container]
+    ##########
+    connect_find:
+        class: Sim\AppBundle\Repository\EntityFind
+        arguments: [@service_container,@connect]
+    client_find:
+        class: Sim\AppBundle\Repository\EntityFind
+        arguments: [@service_container,@client]
+    event_find:
+        class: Sim\AppBundle\Repository\EntityFind
+        arguments: [@service_container,@event]
+    project_find:
+        class: Sim\AppBundle\Repository\EntityFind
+        arguments: [@service_container,@project]
