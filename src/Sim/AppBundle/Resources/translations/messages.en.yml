@@ -218,6 +218,7 @@ nav:
     contacts: Contacts
     client: Client
     project: Project
+    note: Note
 
 extension:
     translation:

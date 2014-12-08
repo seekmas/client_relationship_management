@@ -1,0 +1,17 @@
+<section data-collection-name="calendar_events">
+
+    <article class="note">
+        <div class="note_body">
+            <h1><a href="#">Upcoming Events</a></h1>
+            <ul class="project_dates">
+                {% for note in notes %}
+                <li>
+                    <a href="#">{{ note.subject }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="more_events"><a href="#" class="decorated">All upcoming events...</a></p>
+        </div>
+    </article>
+
+</section>

@@ -20,9 +20,16 @@ class HistoryController extends Controller
         $objectClass = get_class($project);
         $objectId = $project_id;
 
-        $version_rollback = $this->get('version')->findBy(
-            ['objectClass' => $objectClass , 'objectId' => $objectId]
-        );
+        $version_rollback = $this->get('version')
+                                 ->createQueryBuilder('v')
+                                 ->select('v')
+                                 ->where('v.objectClass = :objectClass')
+                                 ->AndWhere('v.objectId = :objectId')
+                                 ->setParameter('objectClass' , $objectClass)
+                                 ->setParameter('objectId' , $objectId)
+                                 ->orderBy('v.id' , 'desc')
+                                 ->getQuery()
+                                 ->getResult();
 
         return [
             'project' => $project ,
@@ -34,7 +41,7 @@ class HistoryController extends Controller
      * @Route("/{project_id}/project_rollback/{version}" , name="project_rollback")
      * @Template()
      */
-    public function RollbackAction($project_id , $version = 1)
+    public function rollbackAction($project_id , $version = 1)
     {
         $em = $this->getManager();
         $repo = $em->getRepository('Gedmo\Loggable\Entity\LogEntry'); // we use default log entry class

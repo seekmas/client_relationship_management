@@ -38,6 +38,11 @@ history:
     prefix:   /history
     type:     annotation
 
+note:
+    resource: "@SimAppBundle/Controller/NoteController.php"
+    prefix:   /note
+    type:     annotation
+
 facetime:
     resource: "@SimAppBundle/Controller/FacetimeController.php"
     prefix:   /facetime

@@ -16,20 +16,20 @@
                 <h3>Data Operations</h3>
                 {% set logs = project | loggable %}
 
-                <table class="table">
+                <table class="table table-condensed">
 
                 <tr>
                     <th>Version</th>
                     <th>Handler</th>
                     <th>Action</th>
                     <th>Changes</th>
-                    <th>Modified At</th>
+                    <th>ModifiedAt</th>
                     <th>Action</th>
                 </tr>
 
-                {% for log in logs %}
+                {% for key , log in logs %}
 
-                    <tr>
+                    <tr {% if key == 0 %}class="success"{% endif %}>
 
                         <td>{{ log.version }}</td>
 
@@ -43,10 +43,13 @@
                                 <span class="label label-success">original data</span>
                             {% endif %}
 
+                            <dl class="dl-horizontal">
+
                             {% for key , data in log.data if key != 'dateFilter' %}
                                 {% set translations = 'label.project.' ~ key  %}
-                                <p>{{ translations | translate_to }} =>
+                                <dt>{{ translations | translate_to }}</dt>
 
+                                <dd>
                                 {% if get_type(data) == 'object' %}
 
                                     {{ data | date('Y-m-d') }}
@@ -56,9 +59,10 @@
                                     {{ data }}
 
                                 {% endif %}
-                                </p>
+                                </dd>
 
                             {% endfor %}
+                            </dl>
 
                         </td>
 
@@ -80,14 +84,14 @@
             <div class="col-md-4">
                 <h3>Rollback Operations</h3>
 
-                <table class="table">
+                <table class="table table-condensed">
                     <tr>
                         <th>Handler</th>
                         <th>Rollback At</th>
                         <th>To version</th>
                     </tr>
                     {% for key , version in version_rollback %}
-                        <tr {% if key+1 == version_rollback | length %}class="success"{% endif %}>
+                        <tr {% if key == 0 %}class="success"{% endif %}>
                             <td>{{ version.username }}</td>
                             <td>{{ version.createdAt | date('Y-m-d') }}</td>
                             <td>{{ version.version }}</td>
