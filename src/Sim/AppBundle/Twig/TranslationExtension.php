@@ -19,7 +19,7 @@ class TranslationExtension extends \Twig_Extension
             new \Twig_SimpleFilter('translate' , [$this , 'translate'] ),
             new \Twig_SimpleFilter('log_to_string' , [$this , 'log_to_string']) ,
             new \Twig_SimpleFilter('log_to_entity' , [$this , 'log_to_entity']) ,
-
+            new \Twig_SimpleFilter('translate_to' , [$this , 'translate_to']) ,
         ];
     }
 
@@ -40,6 +40,12 @@ class TranslationExtension extends \Twig_Extension
         ];
 
         return $list[$key];
+    }
+
+    public function translate_to($translation)
+    {
+        $translator = $this->get('translator');
+        return $translator->trans($translation);
     }
 
     public function log_to_string($object)

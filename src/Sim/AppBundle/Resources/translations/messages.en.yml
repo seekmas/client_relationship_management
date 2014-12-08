@@ -50,9 +50,12 @@ label:
         startAt: Start at
         endAt: Close at
         contactPayment: Fund of project
+        currency: Currency
         description: Description
         save: Create / Update
         search: Search
+        createdAt: Created At
+
     client:
         name: Client's name ( company name )
         description: Client's description( such as: business records , industry etc. )
@@ -117,13 +120,14 @@ label:
         save: Update / Save
 twig:
     home:
-        log: Log of operations
+        log: Log of operations <small>Here’s what’s been happening in our crm.</small>
     key: Key
     value: Value
     action: Action
     select: select an item
     return: Return
     update: Update
+    history: History
     edit: Edit
     remove: Remove
     add: Add

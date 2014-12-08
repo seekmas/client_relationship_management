@@ -1,0 +1,104 @@
+{% extends "SimAppBundle::layouts.html.twig" %}
+
+{% block title %}History{% endblock %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <h2>History of Project</h2>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <h3>Data Operations</h3>
+                {% set logs = project | loggable %}
+
+                <table class="table">
+
+                <tr>
+                    <th>Version</th>
+                    <th>Handler</th>
+                    <th>Action</th>
+                    <th>Changes</th>
+                    <th>Modified At</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for log in logs %}
+
+                    <tr>
+
+                        <td>{{ log.version }}</td>
+
+                        <td>{{ log.username }}</td>
+
+                        <td><strong>{{ log.action }}</strong></td>
+
+                        <td>
+
+                            {% if log.action == 'create' %}
+                                <span class="label label-success">original data</span>
+                            {% endif %}
+
+                            {% for key , data in log.data if key != 'dateFilter' %}
+                                {% set translations = 'label.project.' ~ key  %}
+                                <p>{{ translations | translate_to }} =>
+
+                                {% if get_type(data) == 'object' %}
+
+                                    {{ data | date('Y-m-d') }}
+
+                                {% else %}
+
+                                    {{ data }}
+
+                                {% endif %}
+                                </p>
+
+                            {% endfor %}
+
+                        </td>
+
+                        <td>{{ log.loggedAt | date('Y-m-d') }}</td>
+
+
+
+                        <td>
+                            <a href="{{ url('project_rollback' , {'project_id': project.id , 'version':log.version }) }}">Rollback</a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+                </table>
+
+            </div>
+
+            <div class="col-md-4">
+                <h3>Rollback Operations</h3>
+
+                <table class="table">
+                    <tr>
+                        <th>Handler</th>
+                        <th>Rollback At</th>
+                        <th>To version</th>
+                    </tr>
+                    {% for key , version in version_rollback %}
+                        <tr {% if key+1 == version_rollback | length %}class="success"{% endif %}>
+                            <td>{{ version.username }}</td>
+                            <td>{{ version.createdAt | date('Y-m-d') }}</td>
+                            <td>{{ version.version }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+

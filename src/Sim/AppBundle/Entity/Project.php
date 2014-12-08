@@ -65,6 +65,13 @@ class Project
     /**
      * @var string
      * @Gedmo\Versioned
+     * @ORM\Column(name="currency", type="string" , length=16 , nullable=true)
+     */
+    private $currency;
+
+    /**
+     * @var string
+     * @Gedmo\Versioned
      * @ORM\Column(name="description", type="text" , nullable=true , nullable=true)
      */
     private $description;
@@ -263,6 +270,24 @@ class Project
     {
         $this->description = $description;
 
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @return Project
+     * @param string $currency
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
         return $this;
     }
 

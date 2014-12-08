@@ -74,6 +74,13 @@
                                     {{ 'twig.update' | trans | raw }}
                                 </a>
                             </small>
+
+                            <small>
+                                <a href="{{ url('history_of_project' , {'project_id' : project.id}) }}">
+                                    {{ 'twig.history' | trans | raw }}
+                                </a>
+                            </small>
+
                         </h2>
                     </div>
 
@@ -82,7 +89,13 @@
                         <dd><h4>{{ project | raw }}</h4></dd>
 
                         <dt>{{ 'label.project.contactPayment' | trans | raw }}</dt>
-                        <dd><i class="fa fa-rmb"></i> {{ project.contactPayment }}</dd>
+                        <dd>{{ project.contactPayment }}
+
+                            {% if project.currency %}
+                                {{ project.currency }}
+                            {% endif %}
+
+                        </dd>
 
                         <dt>{{ 'label.project.signAt' | trans | raw }}</dt>
                         <dd>{% if project.signAt %}{{ project.signAt | date('Y-m-d') }}{% endif %}</dd>
@@ -97,7 +110,6 @@
                         <dt>{{ fluent.subject }}</dt>
                         <dd>{{ fluent.value }}</dd>
                         {% endfor %}
-
                     </dl>
 
                 </div>

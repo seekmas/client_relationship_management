@@ -88,7 +88,6 @@ class ProjectController extends Controller
             $em->flush();
             $this->alert($translator->trans('message.project.create_success') ,$translator->trans('message.project.project_is_updated'));
 
-
             return $this->redirect('edit_project' , ['project_id' => $project->getId()]);
         }
 

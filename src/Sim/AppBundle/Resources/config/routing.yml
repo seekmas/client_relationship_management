@@ -32,3 +32,13 @@ drop:
     resource: "@SimAppBundle/Controller/DropController.php"
     prefix:   /drop
     type:     annotation
+
+history:
+    resource: "@SimAppBundle/Controller/HistoryController.php"
+    prefix:   /history
+    type:     annotation
+
+facetime:
+    resource: "@SimAppBundle/Controller/FacetimeController.php"
+    prefix:   /facetime
+    type:     annotation

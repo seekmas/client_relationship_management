@@ -42,6 +42,11 @@ class ProjectType extends AbstractType
                     'label' => 'label.project.contactPayment' ,
                 ]
             )
+            ->add('currency' , null ,
+                [
+                    'label' => 'label.project.currency' ,
+                ]
+            )
             ->add('description' , null ,
                 [
                     'label'  => 'label.project.description'

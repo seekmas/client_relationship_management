@@ -1,5 +1,5 @@
 services:
-    ##########
+    #twig
     page:
         class: Sim\AppBundle\Paginator\Paginator
         arguments: [@knp_paginator , @service_container]
@@ -15,7 +15,7 @@ services:
         arguments: [@service_container]
         tags:
            - { name: twig.extension }
-    ##########
+    #entity
     event:
         class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: doctrine
@@ -52,13 +52,30 @@ services:
         factory_method: getRepository
         arguments: [ Sim\AppBundle\Entity\Fluent ]
 
+    version:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method: getRepository
+        arguments: [ Sim\AppBundle\Entity\Version ]
+
+    #utils
     string_utils:
         class: Sim\AppBundle\Utils\StringUtils
-    ##########
+
+    logs_accessor:
+        class: Sim\AppBundle\Utils\EntityLogsAccessor
+        arguments: [@service_container]
+
+    version_rollback:
+        class: Sim\AppBundle\Utils\VersionRollback
+        arguments: [@service_container]
+
+    #form
     fixed_type:
         class: Sim\AppBundle\Form\FixedType
         arguments: [@service_container]
-    ##########
+
+    #repo
     connect_find:
         class: Sim\AppBundle\Repository\EntityFind
         arguments: [@service_container,@connect]
