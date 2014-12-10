@@ -75,6 +75,10 @@ services:
         class: Sim\AppBundle\Utils\VersionRollback
         arguments: [@service_container]
 
+    notify_service:
+        class: Sim\AppBundle\Utils\Notify
+        arguments: [@service_container]
+
     #form
     fixed_type:
         class: Sim\AppBundle\Form\FixedType

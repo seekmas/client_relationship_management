@@ -3,6 +3,8 @@
 namespace Sim\AppBundle\Controller;
 
 use Sim\AppBundle\Entity\Note;
+use Sim\AppBundle\Entity\NoteComment;
+use Sim\AppBundle\Form\NoteCommentType;
 use Sim\AppBundle\Form\NoteType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -16,6 +18,15 @@ class NoteController extends Controller
      */
     public function listAction(Request $request)
     {
+        $user = $this->getUser();
+        $notes = $this->get('note')
+                      ->createQueryBuilder('n')
+                      ->select('n')
+                      ->where('n.userId = :userId')
+                      ->orderBy('n.id' , 'desc')
+                      ->setParameter('userId' , $user->getId())
+                      ->getQuery()
+                      ->getResult();
 
         $note = new Note();
         $type = new NoteType();
@@ -38,7 +49,8 @@ class NoteController extends Controller
         }
 
         return [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'notes' => $notes
         ];
     }
 
@@ -54,6 +66,41 @@ class NoteController extends Controller
 
         return [
             'notes' => $notes ,
+        ];
+    }
+
+    /**
+     * @Route("/{id}/view" , name="view_note")
+     * @Template()
+     */
+    public function viewAction(Request $request , $id)
+    {
+
+        $user = $this->getUser();
+        $em = $this->getManager();
+
+        $note = $this->get('note')->find($id);
+
+        $noteComment = new NoteComment();
+        $type = new NoteCommentType();
+        $form = $this->getForm($type , $noteComment , $request);
+        if($form->isValid())
+        {
+            $noteComment->setUser($user);
+            $noteComment->setNote($note);
+            $noteComment->setCreatedAt(new \Datetime());
+            $noteComment->setUpdatedAt(new \Datetime());
+
+            $em->persist($noteComment);
+            $em->flush();
+
+            $this->alert('Success' , 'Comment Success');
+            return $this->redirect('view_note' , ['id' => $id]);
+        }
+
+        return [
+            'note' => $note ,
+            'form' => $form->createView() ,
         ];
     }
 }

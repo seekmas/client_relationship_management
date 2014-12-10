@@ -28,15 +28,17 @@ class TranslationExtension extends \Twig_Extension
         $translator = $this->get('translator');
 
         $list = [
-            'create' => $translator->trans('extension.translation.create') ,
-            'update' => $translator->trans('extension.translation.update') ,
-            'remove' => $translator->trans('extension.translation.remove') ,
+            'create'                        => $translator->trans('extension.translation.create') ,
+            'update'                        => $translator->trans('extension.translation.update') ,
+            'remove'                        => $translator->trans('extension.translation.remove') ,
             'Sim\AppBundle\Entity\Connect'  => $translator->trans('extension.translation.contacts') ,
             'Sim\AppBundle\Entity\Event'    => $translator->trans('extension.translation.event') ,
             'Sim\AppBundle\Entity\Project'  => $translator->trans('extension.translation.project') ,
             'Sim\AppBundle\Entity\Client'   => $translator->trans('extension.translation.client') ,
             'Sim\AppBundle\Entity\Fixed'    => $translator->trans('extension.translation.fixed_profile') ,
             'Sim\AppBundle\Entity\Fluent'   => $translator->trans('extension.translation.user_defined_profile') ,
+            'Sim\AppBundle\Entity\Note'     => $translator->trans('extension.translation.note') ,
+            'Sim\AppBundle\Entity\NoteComment' => $translator->trans('extension.translation.noteComment') ,
         ];
 
         return $list[$key];

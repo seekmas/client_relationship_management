@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">{{ 'nav.band' | trans | raw }}</a>
+            <a href="/"><img width="50px" src="{{ asset('logo.png') }}"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,7 +21,7 @@
                 <li><a id="project" href="{{ url('project_home') }}">{{ 'nav.project' | trans | raw }}</a></li>
                 <li><a id="project" href="{{ url('list_of_notes') }}">{{ 'nav.note' | trans | raw }}</a></li>
 
-
+                <li><a href="{{ url('facetime_home') }}">Video-Link</a></li>
             </ul>
 
         </div>

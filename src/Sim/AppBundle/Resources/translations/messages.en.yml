@@ -231,3 +231,5 @@ extension:
         client: a client
         fixed_profile: a fixed profile
         user_defined_profile: a user-defined profile
+        note: a note
+        noteComment: comment of note
