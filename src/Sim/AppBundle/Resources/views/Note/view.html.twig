@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="jumbotron">
-        <h2>{{ 'twig.note.create' | trans | raw }}</h2>
+        <h2>{{ 'twig.note.info' | trans | raw }}</h2>
     </div>
 
     <div class="container">
@@ -46,14 +46,23 @@
 
                     <hr/>
 
-                    <table class="table">
+                    <table class="table table-condensed table-bordered">
 
                         <tr>
+                            <td>#</td>
                             <td>Comment List</td>
                         </tr>
-                        {% for message in note.noteComment %}
+                        {% for key , message in note.noteComment %}
                         <tr>
-                            <td title="{{ message.createdAt | date('Y-m-d H:i:s') }}">{{ message }}</td>
+                            <td>
+                                {{ key+1 }}
+                            </td>
+
+                            <td title="{{ message.createdAt | date('Y-m-d H:i:s') }}">
+
+                                {{ message }}
+
+                            </td>
                         </tr>
                         {% endfor %}
 

@@ -47,3 +47,8 @@ facetime:
     resource: "@SimAppBundle/Controller/FacetimeController.php"
     prefix:   /facetime
     type:     annotation
+
+store:
+    resource: "@SimAppBundle/Controller/StoreController.php"
+    prefix:   /sharing
+    type:     annotation

@@ -55,7 +55,6 @@ label:
         save: Create / Update
         search: Search
         createdAt: Created At
-
     client:
         name: Client's name ( company name )
         description: Client's description( such as: business records , industry etc. )
@@ -117,6 +116,9 @@ label:
             in_cooperation: Cooperation in progress
             terminate: Cooperation terminated
             finish: Cooperation finished
+        save: Update / Save
+
+    note:
         save: Update / Save
 twig:
     home:
@@ -210,7 +212,9 @@ twig:
             project: Project
             update_fixed: Update fixed information
             update_user_defined: Update user-defined information
-
+    note:
+         create: Create / Manage Notes
+         info: Note Information
 nav:
     band: Makoto CRM
     home: Home
@@ -219,6 +223,7 @@ nav:
     client: Client
     project: Project
     note: Note
+    sharing: File Sharing
 
 extension:
     translation:

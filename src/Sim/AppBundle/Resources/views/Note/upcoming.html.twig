@@ -1,3 +1,4 @@
+{% if notes | length > 0 %}
 <section data-collection-name="calendar_events">
 
     <article class="note">
@@ -6,12 +7,13 @@
             <ul class="project_dates">
                 {% for note in notes %}
                 <li>
-                    <a href="#">{{ note.subject }}</a>
+                    <a href="{{ url('view_note' , {'id' : note.id}) }}">{{ note.subject }}</a>
                 </li>
                 {% endfor %}
             </ul>
-            <p class="more_events"><a href="#" class="decorated">All upcoming events...</a></p>
+            <p class="more_events"><a href="{{ url('list_of_notes') }}" class="decorated">All upcoming events...</a></p>
         </div>
     </article>
 
 </section>
+{% endif %}

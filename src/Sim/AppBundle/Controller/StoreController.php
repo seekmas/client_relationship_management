@@ -2,14 +2,14 @@
 
 namespace Sim\AppBundle\Controller;
 
-use Symfony\Component\Foundation\HttpRequest;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class StoreController extends Controller
 {
     /**
-    * @Route("/" , name="store_home")
+    * @Route("/" , name="sharing_home")
     * @Template()
     */
     public function indexAction(Request $request)

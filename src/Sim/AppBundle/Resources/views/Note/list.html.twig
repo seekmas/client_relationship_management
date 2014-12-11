@@ -24,6 +24,10 @@
                 </div>
                 <div class="col-md-12">
                     <table class="table">
+                        <tr>
+                            <td>Note Subject</td>
+                            <td>Expired At</td>
+                        </tr>
                         {% for note in notes %}
                         <tr>
                             <td><a href="{{ url('view_note' , {'id': note.id }) }}">{{ note }}</td>

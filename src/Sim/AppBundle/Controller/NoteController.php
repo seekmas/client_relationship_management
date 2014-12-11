@@ -60,10 +60,17 @@ class NoteController extends Controller
      */
     public function upcomingAction()
     {
+
+
         $user = $this->getUser();
-        $notes = $this->get('note')->findBy(['userId' => $user->getId()]);
-
-
+        $notes = $this->get('note')
+                      ->createQueryBuilder('n')
+                      ->select('n')
+                      ->orderBy('n.id' , 'desc')
+                      ->where('n.userId = :userId')
+                      ->setParameter('userId' , $user->getId())
+                      ->getQuery()
+                      ->getResult();
         return [
             'notes' => $notes ,
         ];
